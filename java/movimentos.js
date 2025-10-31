@@ -1,35 +1,40 @@
-const container = document.getElementById("container");
+const container = document.getElementById("grid");
 const player = document.getElementById("player");
 
-let playerX = 180; // posição inicial no eixo X
-let playerY = 100; // posição inicial no eixo Y
+let playerX = 150; // posição inicial no eixo X
+let playerY = 310; // posição inicial no eixo Y
 
 player.style.top = playerY + "px";
 player.style.left = playerX + "px";
 
-const step = 40;   // tamanho do movimento
-const limitMin = 0;
-const limitMax = 400;
+const step = 80;   // tamanho do movimento
+const limitMinH = 160;
+const limitMaxH = 1560;
+
+const limitMinV = 148;   // topo
+const limitMaxV = 550;  // fundo 
+
 
 document.addEventListener("keydown", (e) => {
 
     switch (e.key) {
-        
+
         case "ArrowLeft":
-            if (playerX > limitMin) playerX -= step;
+            if (playerX > limitMinH) playerX -= step;
             break;
 
         case "ArrowRight":
-            if (playerX < limitMax) playerX += step;
+            if (playerX < limitMaxH) playerX += step;
             break;
 
         case "ArrowUp":
-            if (playerY > limitMin) playerY -= step;
+            if (playerY > limitMinV) playerY -= step;
             break;
 
         case "ArrowDown":
-            if (playerY < limitMax) playerY += step;
+            if (playerY < limitMaxV) playerY += step;
             break;
+
     }
 
     player.style.top = playerY + "px";
