@@ -14,7 +14,7 @@ const limitMax = 400;
 document.addEventListener("keydown", (e) => {
 
     switch (e.key) {
-
+        
         case "ArrowLeft":
             if (playerX > limitMin) playerX -= step;
             break;

@@ -1,8 +1,10 @@
 #container{
-    width: 1000px; 
+    width: 2020px; 
     height: 600px; 
     border: 1px solid gray; 
     position: relative;
+    margin: 2em; 
+    margin-top: 5em;
 }
 
 #player{
