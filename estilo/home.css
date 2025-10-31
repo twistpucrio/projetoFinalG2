@@ -1,0 +1,35 @@
+body {
+    background-image: url('../img/telainicio.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed; 
+    background-position: center center; 
+    min-height: 100vh;
+    margin: 0;
+}
+
+/* container dos botões */
+#main {
+    display: flex;
+    flex-direction: row; /* ✅ ADICIONADO — deixa os botões em coluna */
+    justify-content: flex-start;
+    align-items: flex-start; /* ✅ ALTERADO — força ficar na esquerda */
+    gap: 10px; /* ✅ REDUZIDO — menos espaço entre botões */
+    margin-top: 863px; /* ✅ AUMENTADO — joga pra baixo */
+    margin-left: 0px; /* mantido */
+}
+
+/* imagens dos botões */
+#main img {
+    width: 70px; /* ✅ DIMINUÍDO — botões menores */
+    height: auto;
+    image-rendering: pixelated;
+    cursor: pointer;
+}
+
+/* botão sem borda */
+button {
+    background: none;
+    border: none;
+    padding: 0;
+}
