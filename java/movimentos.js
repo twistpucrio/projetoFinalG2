@@ -1,18 +1,18 @@
 const container = document.getElementById("grid");
 const player = document.getElementById("player");
 
-let playerX = 150; // posição inicial no eixo X
-let playerY = 310; // posição inicial no eixo Y
+let playerX = 165; // posição inicial no eixo X
+let playerY = 250; // posição inicial no eixo Y
 
 player.style.top = playerY + "px";
 player.style.left = playerX + "px";
 
 const step = 80;   // tamanho do movimento
-const limitMinH = 160;
+const limitMinH = 200;
 const limitMaxH = 1560;
 
-const limitMinV = 148;   // topo
-const limitMaxV = 550;  // fundo 
+const limitMinV = 14;   // topo
+const limitMaxV = 450;  // fundo 
 
 
 document.addEventListener("keydown", (e) => {

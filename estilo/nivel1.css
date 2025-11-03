@@ -1,12 +1,17 @@
-#grid{
-    width: 1580px; 
-    height: 600px; 
-    border: 1px solid gray; 
-    display: flex;
-    justify-content: center; /* centro horizontal */
-    align-items: center;
-    margin-left: 8%; 
-    margin-top: 5em;
+#grid {
+  position: relative;
+  width: 1580px;
+  height: 560px;
+  margin: 50px auto;
+  border: 2px solid #aaa;
+  border-radius: 10px;
+
+  /* cria o padrão quadriculado */
+  background-image: 
+    linear-gradient(to right, #8d8d8d 1px, transparent 1px),
+    linear-gradient(to bottom, #ccc 1px, transparent 1px);
+  background-size: 80px 80px; /* tamanho de cada célula */
+  background-color: #eee;
 }
 
 #player{
