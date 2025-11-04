@@ -15,8 +15,31 @@
 }
 
 #player{
-    width: 4%;
+    width: 80px;
     height: 13%; 
     position:fixed; 
 
+}
+
+#arbustos1{
+   width: 1580px; 
+    height: 220px; 
+    position: absolute; /* Alterado de 'fixed' para 'absolute' */
+    left: 0;
+    right: 0;
+    margin: 0 auto; /* Centralização horizontal correta */
+    bottom: 0; /* Encosta na parte inferior da grid */
+    border-radius: 10px;
+}
+
+
+#arbustos2{
+    width: 1580px; 
+    height: 220px; 
+    position: absolute; /* Alterado de 'fixed' para 'absolute' */
+    left: 0;
+    right: 0;
+    margin: 0 auto; /* Centralização horizontal correta */
+    top: 0; /* Encosta na parte superior da grid */
+    border-radius: 10px;
 }

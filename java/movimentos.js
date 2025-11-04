@@ -1,14 +1,14 @@
 const container = document.getElementById("grid");
 const player = document.getElementById("player");
 
-let playerX = 165; // posição inicial no eixo X
+let playerX = 275; // posição inicial no eixo X
 let playerY = 250; // posição inicial no eixo Y
 
 player.style.top = playerY + "px";
 player.style.left = playerX + "px";
 
 const step = 80;   // tamanho do movimento
-const limitMinH = 200;
+const limitMinH = 300;
 const limitMaxH = 1560;
 
 const limitMinV = 14;   // topo
