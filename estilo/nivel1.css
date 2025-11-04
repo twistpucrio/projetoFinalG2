@@ -1,3 +1,8 @@
+body{
+  background-color: rgb(133, 191, 214) ;
+}
+
+
 #grid {
   position: relative;
   width: 1580px;
@@ -8,10 +13,10 @@
 
   /* cria o padrão quadriculado */
   background-image: 
-    linear-gradient(to right, #8d8d8d 1px, transparent 1px),
-    linear-gradient(to bottom, #ccc 1px, transparent 1px);
+    linear-gradient(to right, #817e7e 1px, transparent 1px),
+    linear-gradient(to bottom,#817e7e 1px, transparent 1px);
   background-size: 80px 80px; /* tamanho de cada célula */
-  background-color: #eee;
+  background-color: #969090;
 }
 
 #player{
@@ -42,4 +47,43 @@
     margin: 0 auto; /* Centralização horizontal correta */
     top: 0; /* Encosta na parte superior da grid */
     border-radius: 10px;
+}
+
+.carro{
+  width: 190px; 
+  height: 200px; 
+  position: absolute;
+}
+
+#carro2{
+  margin-left: 697px; 
+  margin-top: 95px; 
+}
+
+#carro1{
+  margin-left: 297px; 
+  margin-top: 330px; 
+}
+
+
+
+.destino{
+  position: absolute;
+  margin: 0 auto; 
+  margin-left: 1450px; 
+  margin-top: -43px; 
+  width: 270px; 
+  height: 680px; 
+
+}
+
+.pet{
+  width: 80px; 
+  height: 120px;
+  position: absolute;
+}
+
+#gato{
+  margin-left: 1115px; 
+  margin-top: 300px; 
 }
