@@ -16,7 +16,7 @@ body{
     linear-gradient(to right, #817e7e 1px, transparent 1px),
     linear-gradient(to bottom,#817e7e 1px, transparent 1px);
   background-size: 80px 80px; /* tamanho de cada célula */
-  background-color: #969090;
+  background-color: #a7a2a2;
 }
 
 #player{
