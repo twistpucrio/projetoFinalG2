@@ -8,6 +8,7 @@ body{
   width: 1580px;
   height: 560px;
   margin: 50px auto;
+  margin-bottom: 20px;
   border: 2px solid #aaa;
   border-radius: 10px;
 
@@ -22,9 +23,9 @@ body{
 #player{
     width: 80px;
     height: 13%; 
-    position:fixed; 
-
+    position: fixed;
 }
+
 
 #arbustos1{
    width: 1580px; 
@@ -86,4 +87,25 @@ body{
 #gato{
   margin-left: 1115px; 
   margin-top: 300px; 
+}
+
+
+
+#box {
+  width: 100em;
+  height: 5em; /* ESSENCIAL */
+  margin: 1em auto;
+   background-color: aliceblue;
+  border: rgb(204, 201, 39) 0.5em solid ;
+  border-radius: 50px; 
+}
+
+#drag {
+  width: 100em;
+  height: 30em; /* ESSENCIAL */
+  margin: 2em auto;
+ background-color: rgb(198, 205, 211);
+  border: rgb(143, 143, 136) 0.5em solid ;
+  border-radius: 50px; 
+
 }
