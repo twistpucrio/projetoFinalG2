@@ -37,8 +37,8 @@ body {
 }
 
 .button3 img {
-    width: 375px;
-    height: auto;
+    width: 1000px;
+    height: 1000px;
     image-rendering: pixelated;
     cursor: pointer;
 }
