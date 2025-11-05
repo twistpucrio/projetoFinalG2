@@ -21,8 +21,8 @@ body{
 
 #player{
     width: 80px;
-    height: 13%; 
-    position:fixed; 
+    height: 95px; 
+    position:absolute; 
 
 }
 
@@ -56,25 +56,36 @@ body{
 }
 
 #carro2{
-  margin-left: 697px; 
-  margin-top: 95px; 
+  /* margin-left: 697px; -> Mude para 'left' */
+  /* margin-top: 95px; -> Mude para 'top' */
+  left: 697px; 
+  top: 95px; 
 }
 
+/* --- CARRO ROSA --- */
 #carro1{
-  margin-left: 297px; 
-  margin-top: 330px; 
+  /* margin-left: 297px; -> Mude para 'left' */
+  /* margin-top: 330px; -> Mude para 'top' */
+  left: 297px; 
+  top: 330px;
 }
 
-
+#gato{
+  /* margin-left: 1115px; -> Mude para 'left' */
+  /* margin-top: 300px; -> Mude para 'top' */
+  left: 1115px; 
+  top: 300px; 
+}
 
 .destino{
   position: absolute;
-  margin: 0 auto; 
-  margin-left: 1450px; 
-  margin-top: -43px; 
+  /* margin: 0 auto; -> Remova, pois 'left' e 'top' controlam a posição */
+  /* margin-left: 1450px; -> Mude para 'left' */
+  /* margin-top: -43px; -> Mude para 'top' */
+  left: 1450px; 
+  top: -43px; 
   width: 270px; 
   height: 680px; 
-
 }
 
 .pet{
@@ -83,7 +94,22 @@ body{
   position: absolute;
 }
 
-#gato{
-  margin-left: 1115px; 
-  margin-top: 300px; 
+.modal{
+  display: none;
+  position: fixed;
+  top:0;
+  left:0;
+  width:100vw;
+  height:100vh;
+  background: rgba(0,0,0,0.5);
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-content{
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  text-align: center;
+  font-size: 24px;
 }
