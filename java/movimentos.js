@@ -1,7 +1,7 @@
 const container = document.getElementById("grid");
 const player = document.getElementById("player");
 
-const step = 80;    // Tamanho do movimento (célula da grid)
+const step = 80;    // Tamanho do movimento (célula da grid)
 
 // PONTO ZERO DA GRID (Canto superior esquerdo do #grid)
 const offsetX = 0; 
@@ -9,7 +9,7 @@ const offsetY = 0;
 
 // #grid tem 1580px de largura e 560px de altura
 const numCols = 19; // 1580 / 80 = 19.75 -> 19 Colunas
-const numRows = 7;  // 560 / 80 = 7 Linhas
+const numRows = 7;  // 560 / 80 = 7 Linhas
 
 // --- LIMITES DA GRID (Agora baseados em 0,0) ---
 // Coluna 1: 0px
@@ -23,7 +23,6 @@ const limitMinV = offsetY;
 const limitMaxV = offsetY + (numRows - 1) * step; 
 
 // --- POSIÇÕES INICIAIS DO PLAYER (Col 1, Lin 7) ---
-// O player começa no canto superior esquerdo da Coluna 1 e Linha 7
 const startColIndex = 0; // Coluna 1
 const startRowIndex = Math.floor(numRows / 2); // 3 (Linha central)
 
@@ -35,12 +34,6 @@ player.style.left = playerX + "px";
 
 // --- Função Auxiliar para Conversão de Coordenadas de Pixel para Grid (0-indexada) ---
 const getGridCoord = (pixelCoord) => Math.round(pixelCoord / step);
-
-
-// casas onde NÃO pode entrar (coluna, linha) (0-indexadas)
-// Mapeamento baseado nos seus valores de left/top do CSS (Col 10 = 9)
-// ATENÇÃO: Se o Game Over está na Coluna 8 (índice 7), 
-// ESTA VERSÃO CORRIGE ISSO, PULANDO AS COLUNAS 7 e 8.
 
 const obstaculos = [
     // --- Carro Roxo (Começa na Coluna 10, Índice 9 | Linhas 2, 3, 4)
@@ -74,55 +67,85 @@ const destino = [
    
 ];
 
-// --- FUNÇÕES MODAL (Permanecem as mesmas) ---
+// --- FUNÇÕES MODAL ---
 
 function abrirGameOver(){
+    // 1. Obtém o elemento da imagem dentro do modal
+    const modalImage = document.getElementById("gameOverModalImage");
+    
+    // 2. Define a imagem que deve aparecer
+    // O ID "gameOverModalImage" deve estar no seu HTML, como sugerido anteriormente.
+    modalImage.src = "img/entregadoraCaida.png";
+    
+    // 3. Exibe o modal
     document.getElementById("gameOverModal").style.display = "flex";
+    }
+
+    function abrirVitoria(){
+        document.getElementById("vitoriaModal").style.display = "flex";
+    }
+
+// Função para fechar o modal, limpar a imagem e reiniciar o jogador (sem recarregar)
+function fecharGameOverEReiniciar() {
+    // 1. Limpa a fonte da imagem do modal (opcional, mas boa prática)
+    document.getElementById("gameOverModalImage").src = "";
+
+    // 2. Fecha o modal
+    document.getElementById("gameOverModal").style.display = "none";
+
+    // 3. Reinicia a posição do jogador
+    playerX = startColIndex * step; // 0px
+    playerY = startRowIndex * step; // 240px
+    player.style.top = playerY + "px";
+    player.style.left = playerX + "px";
+
+    // Se quiser recarregar, use location.reload();
 }
 
-function abrirVitoria(){
-    document.getElementById("vitoriaModal").style.display = "flex";
-}
-
-
-// --- LÓGICA DE MOVIMENTO PRINCIPAL ---
+// --- LÓGICA DE MOVIMENTO PRINCIPAL (BLOCO ÚNICO) ---
 
 document.addEventListener("keydown", (e) => {
+    if (["ArrowUp", "ArrowDown", "ArrowLeft", "ArrowRight"].includes(e.key)) {
+        e.preventDefault(); 
+    }
+    
     let nextX=playerX;
     let nextY=playerY;
 
     switch (e.key) {
-        case "ArrowLeft": 
-            if(playerX > limitMinH) nextX -= step; 
-            break;
-        case "ArrowRight": 
-            if(playerX < limitMaxH) nextX += step; 
-            break;
-        case "ArrowUp": 
-            if(playerY > limitMinV) nextY -= step; 
-            break;
-        case "ArrowDown": 
-            if(playerY < limitMaxV) nextY += step; 
-            break;
-    }
+    case "ArrowLeft": 
+    if(playerX > limitMinH) nextX -= step; 
+    break;
+    case "ArrowRight": 
+    if(playerX < limitMaxH) nextX += step; 
+    break;
+    case "ArrowUp": 
+    if(playerY > limitMinV) nextY -= step; 
+    break;
+    case "ArrowDown": 
+    if(playerY < limitMaxV) nextY += step; 
+    break;
+ }
 
     // CÁLCULO DA PRÓXIMA POSIÇÃO DA GRID (0-indexada)
     let gridprox={
-      x: getGridCoord(nextX), 
-      y: getGridCoord(nextY)
+        x: getGridCoord(nextX), 
+        y: getGridCoord(nextY)
     };
 
     // 1. Checa colisão com obstáculos
-    if (obstaculos.some(o => o.x === gridprox.x && o.y === gridprox.y)) {
+        if (obstaculos.some(o => o.x === gridprox.x && o.y === gridprox.y)) {
+
+        // Chama a função que configura a imagem no modal e o abre.
         abrirGameOver();
         return; // bloqueia o movimento
     }
 
     // 2. Checa se chegou no destino
     if (destino.some(d => d.x === gridprox.x && d.y === gridprox.y)) {
-        abrirVitoria();
-        return;
-}
+    abrirVitoria();
+    return;
+    }
 
     // 3. Atualiza a posição da boneca (Movimento instantâneo/teletransporte)
     playerX = nextX;
@@ -131,4 +154,4 @@ document.addEventListener("keydown", (e) => {
     player.style.left = playerX + "px";
 
     console.log(`Posição em Pixels: (${playerX}, ${playerY}) | Posição na Grid (0-index): (${gridprox.x}, ${gridprox.y})`);
-});
+}); // ⬅️ Fechamento correto do evento
