@@ -2,7 +2,6 @@ body{
   background-color: rgb(133, 191, 214) ;
 }
 
-
 #grid {
   position: relative;
   width: 1580px;
@@ -97,7 +96,7 @@ body{
 }
 
 
-#gato{
+#aux_gato{
   margin-left: 1115px; 
   margin-top: 300px; 
 }
@@ -120,7 +119,7 @@ body{
  background-color: rgb(198, 205, 211);
   border: rgb(143, 143, 136) 0.5em solid ;
   border-radius: 50px; 
-
+}
 
 .modal{
   display: none;
