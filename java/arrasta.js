@@ -1,4 +1,4 @@
-const gato = document.getElementById('gato');
+const gato = document.getElementById('aux_gato');
 
 if (!gato) {
   console.error('Elemento #gato não encontrado no DOM.');

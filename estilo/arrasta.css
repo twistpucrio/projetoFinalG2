@@ -12,17 +12,17 @@ body, html {
   overflow: hidden;
 }
 
-#gato {
+#aux_gato {
   position: absolute;
   cursor: grab;
   user-select: none;
   -webkit-user-drag: none;
 }
 
-#gato:hover {
+#aux_gato:hover {
   cursor: grab;
 }
 
-#gato:active {
+#aux_gato:active {
   cursor: grabbing;
 }

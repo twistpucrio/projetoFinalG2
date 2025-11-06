@@ -2,7 +2,6 @@ body{
   background-color: rgb(133, 191, 214) ;
 }
 
-
 #grid {
   position: relative;
   width: 1580px;
@@ -92,6 +91,32 @@ body{
   width: 80px; 
   height: 120px;
   position: absolute;
+}
+
+
+#aux_gato{
+  margin-left: 1115px; 
+  margin-top: 300px; 
+}
+
+
+
+#box {
+  width: 100em;
+  height: 5em; /* ESSENCIAL */
+  margin: 1em auto;
+   background-color: aliceblue;
+  border: rgb(204, 201, 39) 0.5em solid ;
+  border-radius: 50px; 
+}
+
+#drag {
+  width: 100em;
+  height: 30em; /* ESSENCIAL */
+  margin: 2em auto;
+ background-color: rgb(198, 205, 211);
+  border: rgb(143, 143, 136) 0.5em solid ;
+  border-radius: 50px; 
 }
 
 .modal{
