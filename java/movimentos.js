@@ -11,6 +11,7 @@ const offsetY = 0;
 const numCols = 19; // 1580 / 80 = 19.75 -> 19 Colunas
 const numRows = 7;  // 560 / 80 = 7 Linhas
 
+
 // --- LIMITES DA GRID (Agora baseados em 0,0) ---
 // Coluna 1: 0px
 const limitMinH = offsetX; 

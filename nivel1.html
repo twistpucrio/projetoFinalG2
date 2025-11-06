@@ -5,7 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Move</title>
     <link rel="stylesheet" href="estilo/nivel1.css">
+    <!-- Load Blockly core -->
+<script src="https://unpkg.com/blockly/blockly_compressed.js"></script>
+<!-- Load the default blocks -->
+<script src="https://unpkg.com/blockly/blocks_compressed.js"></script>
+<!-- Load a generator -->
+<script src="https://unpkg.com/blockly/javascript_compressed.js"></script>
+<!-- Load a message file -->
+<script src="https://unpkg.com/blockly/msg/en.js"></script>
+    <script src="java/blockly.js" defer></script>
     <script src="java/movimentos.js" defer ></script>
+    
 </head>
 <body>
     <div id="grid"> 
@@ -45,5 +55,7 @@
     <div id="box"> </div>
 
     <div id="drag"></div>
+    <button id="btn_rodar">Rodar</button>
+    
 </body>
 </html>
