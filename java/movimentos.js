@@ -47,18 +47,25 @@ const obstaculos = [
 
     // --- Gato (Ajuste Fino: Coluna 14, Linha 4)
     {x: 14, y: 4},
-    ];
+
+    // Muito longe do destino 
+     {x: 18, y: 0}, //linha 0
+
+     //Muito longe do destino 
+      {x: 18, y: 6}, //linha 5
+
+];
 
 // Posição final da casa (destino): left: 1450px, top: -43px
 const destino = [
-    {x: 18, y: 0}, //linha 0
+   
     {x: 18, y: 1}, //linha 1
     {x: 18, y: 2}, //linha 1
     {x: 18, y: 3}, //linha 2
     {x: 18, y: 4}, //linha 3
     {x: 18, y: 5}, //linha 4
-    {x: 18, y: 6}, //linha 5
-    ];
+   
+];
 
 // --- FUNÇÕES MODAL ---
 
