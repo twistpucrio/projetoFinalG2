@@ -7,7 +7,6 @@ body{
   width: 1580px;
   height: 560px;
   margin: 50px auto;
-  margin-bottom: 20px;
   border: 2px solid #aaa;
   border-radius: 10px;
 
@@ -25,7 +24,6 @@ body{
     position:absolute; 
 
 }
-
 
 #arbustos1{
    width: 1580px; 
@@ -139,5 +137,4 @@ body{
   border-radius: 10px;
   text-align: center;
   font-size: 24px;
-
 }
