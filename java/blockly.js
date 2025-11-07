@@ -1,7 +1,7 @@
 const toolbox = {
   // There are two kinds of toolboxes. The simpler one is a flyout toolbox.
   kind: 'flyoutToolbox',
-  // The contents is the blocks and other items that exist in your toolbox.
+  // Blocos de comando 
   contents: [
     {
       kind: 'block',
@@ -23,11 +23,11 @@ const toolbox = {
         kind: 'block',
         type: 'controls_repeat'
     }
-    // You can add more blocks to this array.
+    // Modificar aqui para mais blocos
   ]
 };
 
-
+//definindo blocos novos
 Blockly.common.defineBlocksWithJsonArray([{
   "type": "hello_world",
   "message0": 'hello world',
@@ -37,15 +37,19 @@ Blockly.common.defineBlocksWithJsonArray([{
   "helpUrl": ""
 }]);
 
+//logica por tras dos blocos
 Blockly.JavaScript.forBlock["hello_world"] = () =>{
     return `console.log('Hello World')`;
 }
 
+//onde adicionamos a toolbox no espaco da div
 const workspace = Blockly.inject(
     document.getElementById('drag'),
     {
         toolbox
     });
+
+//botao para rodar 
 const btnRodar = document.getElementById("btn_rodar");
 btnRodar.addEventListener("click",()=>{
     const script = Blockly.JavaScript.workspaceToCode(workspace);
