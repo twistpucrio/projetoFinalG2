@@ -11,6 +11,7 @@ const offsetY = 0;
 const numCols = 19; // 1580 / 80 = 19.75 -> 19 Colunas
 const numRows = 7;  // 560 / 80 = 7 Linhas
 
+
 // --- LIMITES DA GRID (Agora baseados em 0,0) ---
 // Coluna 1: 0px
 const limitMinH = offsetX; 
@@ -155,3 +156,8 @@ document.addEventListener("keydown", (e) => {
 
     console.log(`Posição em Pixels: (${playerX}, ${playerY}) | Posição na Grid (0-index): (${gridprox.x}, ${gridprox.y})`);
 }); // ⬅️ Fechamento correto do evento
+
+// --- Função auxiliar de atraso ---
+function sleep(ms) {
+  return new Promise(resolve => setTimeout(resolve, ms));
+}
