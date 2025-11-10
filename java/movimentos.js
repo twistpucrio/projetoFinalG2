@@ -156,3 +156,8 @@ document.addEventListener("keydown", (e) => {
 
     console.log(`Posição em Pixels: (${playerX}, ${playerY}) | Posição na Grid (0-index): (${gridprox.x}, ${gridprox.y})`);
 }); // ⬅️ Fechamento correto do evento
+
+// --- Função auxiliar de atraso ---
+function sleep(ms) {
+  return new Promise(resolve => setTimeout(resolve, ms));
+}
