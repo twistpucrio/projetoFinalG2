@@ -1,4 +1,5 @@
-
+let direcaoAtual = 'direita';
+//EM RELACAO AS SETAS DO TECLADO: pode ser cima baixo esquerda ou direita (direcao para qual a personagem está voltada)
 const toolbox = {
   // There are two kinds of toolboxes. The simpler one is a flyout toolbox.
   kind: 'flyoutToolbox',
@@ -26,7 +27,7 @@ const toolbox = {
     },
     {
       kind: 'block',
-      type: 'bloqueio'
+      type: 'blocked_path'
     },
     {
       kind: 'block',
@@ -51,7 +52,7 @@ Blockly.common.defineBlocksWithJsonArray([{
 }]);
 
 Blockly.common.defineBlocksWithJsonArray([{
-  "type": "bloqueio",
+  "type": "blocked_path",
   "message0": 'caminho bloqueado',
   "colour": 300,
   "output": null,
@@ -85,55 +86,54 @@ Blockly.JavaScript.forBlock["hello_world"] = () => {
   return `console.log('Hello World')`;
 }
 
+//tem que mudar pq  o turn left seria apenas trocar a imagem da personagem entao o go_forward tem que analisar para qual lado a personagem está virada e asim descobrir para qual lado seguir... ou algo assim
 Blockly.JavaScript.forBlock["go_forward"] = () => {
   return `
     await sleep(400); // espera 400 ms entre movimentos
-    let nextX = playerX + step;
+    nextX = playerX;
+    nextY = playerY;
 
-    if (nextX <= limitMaxH) {
-      let gridprox = {
-        x: Math.round(nextX / step),
-        y: Math.round(playerY / step)
-      };
+    if (direcaoAtual === 'direita') nextX += step;
+    else if (direcaoAtual === 'esquerda') nextX -= step;
+    else if (direcaoAtual === 'cima') nextY -= step;
+    else if (direcaoAtual === 'baixo') nextY += step;
 
-      if (obstaculos.some(o => o.x === gridprox.x && o.y === gridprox.y)) {
-        abrirGameOver();
-        return;
-      } else if (destino.some(d => d.x === gridprox.x && d.y === gridprox.y)) {
-        abrirVitoria();
-        return;
-      } else {
-        playerX = nextX;
-        player.style.left = playerX + "px";
-        player.style.top = playerY + "px";
-      }
+    var gridprox = {
+      x: Math.round(nextX / step),
+      y: Math.round(nextY / step)
+    };
+
+    if (obstaculos.some(o => o.x === gridprox.x && o.y === gridprox.y)) {
+      abrirGameOver();
+      return;
+    } else if (destino.some(d => d.x === gridprox.x && d.y === gridprox.y)) {
+      abrirVitoria();
+      return;
+    } else {
+      playerX = nextX;
+      playerY = nextY;
+      player.style.left = playerX + "px";
+      player.style.top = playerY + "px";
     }
   `;
 };
 
+
+// o vira para a esquerda por enquanto so funciona caso o "para frente" seja "seta para a direita"
 Blockly.JavaScript.forBlock["turn_left"] = () => {
-  return ` await sleep(400); // espera 400 ms entre movimentos
-    let nextY = playerY - step;
+  return `
+    await sleep(400);
 
-    if (nextY >= limitMinV) {
-      let gridprox = {
-        x: Math.round(playerX / step),
-        y: Math.round(nextY / step)
-      };
+    if (direcaoAtual === 'direita') direcaoAtual = 'cima';
+    else if (direcaoAtual === 'cima') direcaoAtual = 'esquerda';
+    else if (direcaoAtual === 'esquerda') direcaoAtual = 'baixo';
+    else if (direcaoAtual === 'baixo') direcaoAtual = 'direita';
 
-      if (obstaculos.some(o => o.x === gridprox.x && o.y === gridprox.y)) {
-        abrirGameOver();
-        return;
-      } else if (destino.some(d => d.x === gridprox.x && d.y === gridprox.y)) {
-        abrirVitoria();
-        return;
-      } else {
-        playerY = nextY;
-        player.style.left = playerX + "px";
-        player.style.top = playerY + "px";
-      }
-    }`;
-}
+    // Aqui a gnt muda a foto da personagem com:
+    // player.style.transform = dependendo da direcaoAtual
+  `;
+};
+
 
 
 
@@ -149,8 +149,10 @@ const workspace = Blockly.inject(
 //botao para rodar 
 const btnRodar = document.getElementById("btn_rodar");
 btnRodar.addEventListener("click", async () => {
+  playerX = startColIndex * step;
+  playerY = startRowIndex * step;
+  await sleep(400);
   const script = Blockly.JavaScript.workspaceToCode(workspace);
   console.log(script);
   await eval(`(async () => { ${script} })()`);
 });
-  
