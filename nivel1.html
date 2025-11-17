@@ -5,17 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Move</title>
     <link rel="stylesheet" href="estilo/nivel1.css">
-    <!-- Load Blockly core -->
-<script src="https://unpkg.com/blockly/blockly_compressed.js"></script>
-<!-- Load the default blocks -->
-<script src="https://unpkg.com/blockly/blocks_compressed.js"></script>
-<!-- Load a generator -->
-<script src="https://unpkg.com/blockly/javascript_compressed.js"></script>
-<!-- Load a message file -->
-<script src="https://unpkg.com/blockly/msg/en.js"></script>
-    <script src="java/blockly.js" defer></script>
     <script src="java/movimentos.js" defer ></script>
-    
 </head>
 <body>
     <div id="grid"> 
@@ -32,29 +22,37 @@
         <!-- modal gameover -->
          <div id="gameOverModal" class="modal">
             <div class="modal-content">
-                <img id="gameOverModalImage" src="img/titulo.png" alt="Game Over" style="width: 100%; height: auto; display: block; margin-bottom: 20px;">
-                <h2> Game Over! </h2>
-                <p>Você colidiu com um obstáculo. Tente novamente!</p>
+                <img id="gameOverModalImage" src="img/titulo.png" alt="Game Over">
+                <h2>Oh não! Você bateu!</h2>
                 <button onclick="fecharGameOverEReiniciar()">Reiniciar Partida</button>
-                <a href="index.html" class="modal-button-link">Voltar ao Menu</a>
+                <button onclick="window.location.href='index.html'">Voltar ao Menu</button>
             </div>
          </div>
 
         <!-- modal vitória -->
          <div id="vitoriaModal" class="modal">
             <div class="modal-content">
+                <img id="gameOverModalImage" src="img/ganhou.jpg" alt="You Win">
                 <h2>Parabéns!</h2>
-                <p>Você chegou ao destino com sucesso!</p>
                 <button onclick="location.reload()">Jogar Novamente</button>
+                <button onclick="window.location.href='index.html'">Voltar ao Menu</button>
             </div>
         </div>
-        
+        <button class="button1"> 
+                <a id="comojogar" href="comoJoga.html">
+                    <img id="ftbotaocomo" src="img/comoJoga.png" alt="home">
+                </a>
+        </button>
+        <button class="button2"> 
+                <a id="comojogar" href="index.html">
+                    <img id="ftbotaocomo" src="img/voltmenu.png" alt="home">
+                </a>
+        </button>
         
 
     </div>
+    <div id="box"> </div>
 
     <div id="drag"></div>
-    <button id="btn_rodar">Rodar</button>
-    
 </body>
 </html>

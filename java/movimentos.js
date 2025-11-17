@@ -65,6 +65,7 @@ const destino = [
     {x: 18, y: 3}, //linha 2
     {x: 18, y: 4}, //linha 3
     {x: 18, y: 5}, //linha 4
+    {x: -1, y: -1}  //posição inválida para evitar erros
    
 ];
 
