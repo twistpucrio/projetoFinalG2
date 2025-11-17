@@ -1,3 +1,46 @@
+body{
+    background-color: rgb(133, 191, 214) ;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
 #container{
-    
+    position: relative; /* referência para posicionar as pizzas */
+    width: 100vw;
+    height: 100vh;
+}
+
+/* Todas as pizzas serão posicionadas de forma independente */
+.pizzaNivel{
+    width: 17em;
+    height: 17em;
+    position: absolute; /* isso permite mover cada uma sem afetar as outras */
+}
+
+/* Agora você usa top e left para cada pizza */
+#nivel1{
+    top: 10em;
+    left: 10em;
+}
+
+#nivel2{
+    top: 25em;
+    left: 30em;
+    width: 16.5em;
+    height: 16.5em;
+}
+
+#nivel3{
+    top: 32em;
+    left: 55em;
+}
+
+#nivel4{
+    top: 20em;
+    left: 80em;
+}
+
+#nivel5{
+    top: 24em;
+    left: 107em;
 }
