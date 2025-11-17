@@ -1,9 +1,12 @@
+//setando a direcao original da personagem
 let direcaoAtual = 'direita';
-//EM RELACAO AS SETAS DO TECLADO: pode ser cima baixo esquerda ou direita (direcao para qual a personagem está voltada)
+
+const personagem = document.getElementById("player");
+
 const toolbox = {
   // There are two kinds of toolboxes. The simpler one is a flyout toolbox.
   kind: 'flyoutToolbox',
-  // Blocos de comando 
+  // -----Blocos de comando ------------
   contents: [
     {
       kind: 'block',
@@ -36,12 +39,16 @@ const toolbox = {
     {
       kind: 'block',
       type: 'turn_left'
+    },
+    {
+      kind: 'block',
+      type: 'turn_right'
     }
     // Modificar aqui para mais blocos
   ]
 };
 
-//definindo blocos novos
+//--------definindo blocos novos-----------
 Blockly.common.defineBlocksWithJsonArray([{
   "type": "hello_world",
   "message0": 'hello world',
@@ -80,13 +87,23 @@ Blockly.common.defineBlocksWithJsonArray([{
   "helpUrl": ""
 }]);
 
+Blockly.common.defineBlocksWithJsonArray([{
+  "type": "turn_right",
+  "message0": 'vira para a direita',
+  "colour": 200,
+  "previousStatement": null,
+  "nextStatement": null,
+  "tooltip": "",
+  "helpUrl": ""
+}]);
 
-//logica por tras dos blocos
+
+//------logica por tras dos blocos----------------------
 Blockly.JavaScript.forBlock["hello_world"] = () => {
   return `console.log('Hello World')`;
 }
 
-//tem que mudar pq  o turn left seria apenas trocar a imagem da personagem entao o go_forward tem que analisar para qual lado a personagem está virada e asim descobrir para qual lado seguir... ou algo assim
+//segue em frente independente da direcao para qual a personagem está voltada
 Blockly.JavaScript.forBlock["go_forward"] = () => {
   return `
     await sleep(400); // espera 400 ms entre movimentos
@@ -119,18 +136,52 @@ Blockly.JavaScript.forBlock["go_forward"] = () => {
 };
 
 
-// o vira para a esquerda por enquanto so funciona caso o "para frente" seja "seta para a direita"
+// o vira para a esquerda independente da direcao para qual ela está voltada
 Blockly.JavaScript.forBlock["turn_left"] = () => {
   return `
     await sleep(400);
 
-    if (direcaoAtual === 'direita') direcaoAtual = 'cima';
-    else if (direcaoAtual === 'cima') direcaoAtual = 'esquerda';
-    else if (direcaoAtual === 'esquerda') direcaoAtual = 'baixo';
-    else if (direcaoAtual === 'baixo') direcaoAtual = 'direita';
+    if (direcaoAtual === 'direita') {
+      direcaoAtual = 'cima';
+      personagem.src = "img/entregadoraDeCostas.png" ;
+    }
+    else if (direcaoAtual === 'cima'){
+      direcaoAtual = 'esquerda';
+      personagem.src = "img/entregadoraViradaEsquerda.png";
+    } 
+    else if (direcaoAtual === 'esquerda'){
+      direcaoAtual = 'baixo';
+      personagem.src = "img/entregadoraDeFrente.png";
+    } 
+    else if (direcaoAtual === 'baixo'){
+      direcaoAtual = 'direita';
+      personagem.src = "img/entregadoraViradaDireita.png";
+    } 
 
-    // Aqui a gnt muda a foto da personagem com:
-    // player.style.transform = dependendo da direcaoAtual
+  `;
+};
+
+// o vira para a direita independente da direcao para qual ela está voltada
+Blockly.JavaScript.forBlock["turn_right"] = () => {
+  return `
+    await sleep(400);
+
+    if (direcaoAtual === 'direita') {
+      direcaoAtual = 'baixo';
+      personagem.src = "img/entregadoraDeFrente.png" ;
+    }
+    else if (direcaoAtual === 'cima'){
+      direcaoAtual = 'direita';
+      personagem.src = "img/entregadoraViradaDireita.png";
+    } 
+    else if (direcaoAtual === 'esquerda'){
+      direcaoAtual = 'cima';
+      personagem.src = "img/entregadoraDeCostas.png";
+    } 
+    else if (direcaoAtual === 'baixo'){
+      direcaoAtual = 'esquerda';
+      personagem.src = "img/entregadoraViradaEsquerda.png";
+    } 
   `;
 };
 
@@ -139,19 +190,29 @@ Blockly.JavaScript.forBlock["turn_left"] = () => {
 
 
 //onde adicionamos a toolbox no espaco da div
-const workspace = Blockly.inject(
-  document.getElementById('drag'),
-  {
-    toolbox
-  });
-
+const workspace = Blockly.inject(document.getElementById('drag'), {
+  toolbox
+});
 
 //botao para rodar 
 const btnRodar = document.getElementById("btn_rodar");
 btnRodar.addEventListener("click", async () => {
+  //reseta direcao logica
   playerX = startColIndex * step;
   playerY = startRowIndex * step;
-  await sleep(400);
+
+  //reseta posicao da personagem
+  player.style.left = playerX + "px";
+  player.style.top = playerY + "px";
+
+  //reseta a direcao para a qual a personagem está voltada
+  direcaoAtual = 'direita';
+
+  //reseta a imagem da personagem
+  personagem.src = "img/entregadoraViradaDireita.png"
+
+  //dando um tempo para que ela nao apareça direto no destino final
+  await sleep(100);
   const script = Blockly.JavaScript.workspaceToCode(workspace);
   console.log(script);
   await eval(`(async () => { ${script} })()`);
