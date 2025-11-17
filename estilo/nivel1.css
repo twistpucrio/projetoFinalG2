@@ -105,13 +105,23 @@ body{
 }
 
 
+
+#box {
+  width: 100em;
+  height: 5em; /* ESSENCIAL */
+  margin: 1em auto;
+   background-color: aliceblue;
+  border: rgb(204, 201, 39) 0.5em solid ;
+  border-radius: 50px; 
+}
+
 #drag {
   width: 100em;
   height: 30em; /* ESSENCIAL */
   margin: 2em auto;
  background-color: rgb(198, 205, 211);
   border: rgb(143, 143, 136) 0.5em solid ;
-  border-radius: 5px; 
+  border-radius: 50px; 
 }
 
 .modal{
@@ -132,8 +142,9 @@ body{
   padding: 20px;
   border-radius: 10px;
   text-align: center;
-  max-width: 400px;
+  max-width: 800px;
   width: 90%;
+  max-height: 700px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -173,7 +184,10 @@ body{
     margin-top: 10px; 
     
     /* Importante para garantir que o link se comporte como bloco e ocupe a largura */
-    display: inline-block; 
+    display: inline-block;
+
+    width: 300px;
+    max-width: 30%;
 }
 
 /* Estilo específico para o botão de Reiniciar (opcionalmente diferente) */
@@ -185,4 +199,43 @@ body{
 /* Estilo específico para o link Voltar ao Menu */
 .modal-content .modal-button-link {
     background-color: #007bff; /* Azul para Voltar */
+}
+
+#vitoriaModal .modal-content {
+    max-width: 800px;
+    width: 50%;
+    max-height: 700px;
+}
+
+.modal-content img {
+    /* Garante que a imagem use uma boa parte da largura do modal */
+    max-width: 70%; 
+    height: auto;
+    margin-bottom: 20px;
+}
+
+.button1 {
+    position: absolute;
+    top:-40px;
+    left: -140px; /* distância do canto esquerdo */
+}
+
+.button1 img {
+    width: 75px;
+    height: auto;
+    image-rendering: pixelated;
+    cursor: pointer;
+}
+
+.button2 {
+  position: absolute;
+  top:60px;
+  left: -140px;
+}
+
+.button2 img {
+    width: 75px;
+    height: auto;
+    image-rendering: pixelated;
+    cursor: pointer;
 }
