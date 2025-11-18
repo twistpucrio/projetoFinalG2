@@ -1,36 +1,47 @@
 <!DOCTYPE html>
 <html lang="pt">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Move</title>
     <link rel="stylesheet" href="estilo/nivel1.css">
-    <script src="java/movimentos.js" defer ></script>
+    <!-- Load Blockly core -->
+    <script src="https://unpkg.com/blockly/blockly_compressed.js"></script>
+    <!-- Load the default blocks -->
+    <script src="https://unpkg.com/blockly/blocks_compressed.js"></script>
+    <!-- Load a generator -->
+    <script src="https://unpkg.com/blockly/javascript_compressed.js"></script>
+    <!-- Load a message file -->
+    <script src="https://unpkg.com/blockly/msg/en.js"></script>
+    <script src="java/blockly.js" defer></script>
+    <script src="java/movimentos.js" defer></script>
 </head>
+
 <body>
-    <div id="grid"> 
-        <img id="arbustos2" src="img/arbusto2.png"  alt="arbustos2">
+    <div id="grid">
+        <img id="arbustos2" src="img/arbusto2.png" alt="arbustos2">
         <img id="player" src="img/entregadoraViradaDireita.png" alt="player">
-        <img id="arbustos1" src="img/arbusto1.png"  alt="arbustos1">
-        <img id="carro1" class="carro" src="img/carro rosa.png"  alt="carrorosa">
-        <img id="carro2" class="carro" src="img/carro roxo.png"  alt="carroroxo">
-        <img id="gato" class="pet" src="img/gato laranja.png"  alt="gatolaranja">
-        <img id="casa" class="destino" src="img/CasaRosa.png"  alt="casaRosa">
+        <img id="arbustos1" src="img/arbusto1.png" alt="arbustos1">
+        <img id="carro1" class="carro" src="img/carro rosa.png" alt="carrorosa">
+        <img id="carro2" class="carro" src="img/carro roxo.png" alt="carroroxo">
+        <img id="gato" class="pet" src="img/gato laranja.png" alt="gatolaranja">
+        <img id="casa" class="destino" src="img/CasaRosa.png" alt="casaRosa">
 
 
 
         <!-- modal gameover -->
-         <div id="gameOverModal" class="modal">
+        <div id="gameOverModal" class="modal">
             <div class="modal-content">
                 <img id="gameOverModalImage" src="img/titulo.png" alt="Game Over">
                 <h2>Oh não! Você bateu!</h2>
                 <button onclick="fecharGameOverEReiniciar()">Reiniciar Partida</button>
                 <button onclick="window.location.href='index.html'">Voltar ao Menu</button>
             </div>
-         </div>
+        </div>
 
         <!-- modal vitória -->
-         <div id="vitoriaModal" class="modal">
+        <div id="vitoriaModal" class="modal">
             <div class="modal-content">
                 <img id="gameOverModalImage" src="img/ganhou.jpg" alt="You Win">
                 <h2>Parabéns!</h2>
@@ -38,21 +49,21 @@
                 <button onclick="window.location.href='index.html'">Voltar ao Menu</button>
             </div>
         </div>
-        <button class="button1"> 
-                <a id="comojogar" href="comoJoga.html">
-                    <img id="ftbotaocomo" src="img/comoJoga.png" alt="home">
-                </a>
+        <button class="button1">
+            <a id="comojogar" href="comoJoga.html">
+                <img id="ftbotaocomo" src="img/comoJoga.png" alt="home">
+            </a>
         </button>
-        <button class="button2"> 
-                <a id="comojogar" href="index.html">
-                    <img id="ftbotaocomo" src="img/voltmenu.png" alt="home">
-                </a>
+        <button class="button2">
+            <a id="voltaMenu" href="index.html">
+                <img id="ftbotaomenu" src="img/voltmenu.png" alt="home">
+            </a>
         </button>
-        
+
 
     </div>
-    <div id="box"> </div>
-
     <div id="drag"></div>
+    <button id="btn_rodar">Rodar</button>
 </body>
+
 </html>

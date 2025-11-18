@@ -11,7 +11,7 @@ const toolbox = {
     {
       kind: 'block',
       type: 'controls_if'
-    },
+    },/*
     {
       kind: 'block',
       type: 'controls_whileUntil'
@@ -23,7 +23,7 @@ const toolbox = {
     {
       kind: 'block',
       type: 'math_number'
-    },
+    },*/
     {
       kind: 'block',
       type: 'controls_repeat'
@@ -185,14 +185,30 @@ Blockly.JavaScript.forBlock["turn_right"] = () => {
   `;
 };
 
-
-
-
-
 //onde adicionamos a toolbox no espaco da div
 const workspace = Blockly.inject(document.getElementById('drag'), {
   toolbox
 });
+
+
+// pequeno timeout para garantir que o flyout foi criado
+setTimeout(() => {
+  const flyout = document.querySelector('.blocklyFlyout');
+  if (flyout) {
+    flyout.style.overflowY = 'auto';
+    flyout.style.overflowX = 'hidden';
+    flyout.style.maxHeight = '100%';
+    flyout.style.boxSizing = 'border-box';
+  }
+
+  // também ajusta a div onde o flyout coloca os blocos
+  const flyoutSvg = document.querySelector('.blocklyFlyoutBackground');
+  if (flyoutSvg && flyoutSvg.parentElement) {
+    flyoutSvg.parentElement.style.overflowY = 'auto';
+    flyoutSvg.parentElement.style.maxHeight = '100%';
+  }
+}, 100);
+
 
 //botao para rodar 
 const btnRodar = document.getElementById("btn_rodar");
