@@ -12,20 +12,32 @@ body{
 
 
 .pizzaNivel{
-    width: 17em;
-    height: 17em;
+    width: 18em;
+    height: 18em;
+    position: absolute; 
+    z-index: 2; 
+}
+
+.blockNivel{
+    width: 19.5em;
+    height: 19.5em;
     position: absolute; 
     z-index: 2; 
 }
 
 
 
-#nivel1{ top: 10em; left: 10em; width: 18.5em; height: 18.5em; }
+
+#nivel1{ top: 10em; left: 10em; width: 19.7em; height: 19.7em; }
 #nivel2{ top: 25em; left: 30em; width: 15.5em; height: 15.5em; }
-#nivel3{ top: 32em; left: 55em; }
+#nivel3{ top: 32em; left: 55.5em; }
 #nivel4{ top: 20em; left: 80em; }
 #nivel5{ top: 24em; left: 107em; }
 
+#nivel2Blocked{ top: 23.2em; left: 28.4em; width: 19.6em; height: 19.6em; transform: rotate(-12deg); }
+#nivel3Blocked{  top: 31em; left: 55em; transform: rotate(5deg); }
+#nivel4Blocked{ top: 19em; left: 79.7em; transform: rotate(14deg); }
+#nivel5Blocked{  top: 23em; left: 106.4em; transform: rotate(-8deg); }
 
 #connection-map {
     position: absolute; 
