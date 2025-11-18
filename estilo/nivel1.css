@@ -232,12 +232,15 @@ body{
 
 .button1 {
     position: absolute;
-    top:-10px;
-    left: -140px; /* distância do canto esquerdo */
+    top:40px;
+    left: -130px; /* distância do canto esquerdo */
+    background: none;
+    border: none;
+    padding: 0;
 }
 
 .button1 img {
-    width: 75px;
+    width: 100px;
     height: auto;
     image-rendering: pixelated;
     cursor: pointer;
@@ -245,12 +248,15 @@ body{
 
 .button2 {
   position: absolute;
-  top:80px;
-  left: -140px;
+  top:140px;
+  left: -130px;
+  background: none;
+  border: none;
+  padding: 0;
 }
 
 .button2 img {
-    width: 75px;
+    width: 100px;
     height: auto;
     image-rendering: pixelated;
     cursor: pointer;
