@@ -5,42 +5,38 @@ body{
 }
 
 #container{
-    position: relative; /* referência para posicionar as pizzas */
+    position: relative; 
     width: 100vw;
     height: 100vh;
 }
 
-/* Todas as pizzas serão posicionadas de forma independente */
+
 .pizzaNivel{
     width: 17em;
     height: 17em;
-    position: absolute; /* isso permite mover cada uma sem afetar as outras */
+    position: absolute; 
+    z-index: 2; 
 }
 
-/* Agora você usa top e left para cada pizza */
-#nivel1{
-    top: 10em;
-    left: 10em;
+
+
+#nivel1{ top: 10em; left: 10em; width: 18.5em; height: 18.5em; }
+#nivel2{ top: 25em; left: 30em; width: 15.5em; height: 15.5em; }
+#nivel3{ top: 32em; left: 55em; }
+#nivel4{ top: 20em; left: 80em; }
+#nivel5{ top: 24em; left: 107em; }
+
+
+#connection-map {
+    position: absolute; 
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1; 
 }
 
-#nivel2{
-    top: 25em;
-    left: 30em;
-    width: 16.5em;
-    height: 16.5em;
-}
 
-#nivel3{
-    top: 32em;
-    left: 55em;
-}
-
-#nivel4{
-    top: 20em;
-    left: 80em;
-}
-
-#nivel5{
-    top: 24em;
-    left: 107em;
+#connection-map line {
+    stroke-dasharray: 8 8;
 }
