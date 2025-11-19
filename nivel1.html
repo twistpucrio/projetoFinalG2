@@ -16,6 +16,7 @@
     <script src="https://unpkg.com/blockly/msg/en.js"></script>
     <script src="java/blockly.js" defer></script>
     <script src="java/movimentos.js" defer></script>
+    <script src="java/tutorial.js" defer></script>
 </head>
 
 <body>
@@ -44,23 +45,43 @@
         <div id="vitoriaModal" class="modal">
             <div class="modal-content">
                 <img id="gameOverModalImage" src="img/ganhou.jpg" alt="You Win">
-                <h2>Parabéns!</h2>
                 <button onclick="location.reload()">Jogar Novamente</button>
                 <button onclick="window.location.href='index.html'">Voltar ao Menu</button>
             </div>
         </div>
-        <button class="button1">
-            <a id="comojogar" href="comoJoga.html">
-                <img id="ftbotaocomo" src="img/comoJoga.png" alt="home">
-            </a>
-        </button>
+
+
+
+            
+            <div id="comoJogarModal" class="modal como-jogar-modal">
+        <div class="modal-content como-jogar-content">
+            <span class="close-button">&times;</span> 
+            
+            <h2 style="color: white;">🕹️ Como Jogar</h2>
+            <p style="color: white; font-size: 20px;">
+                Use os blocos de programação à direita para mover a sua personagem (a entregadora) até a casa rosa (o destino)! Evite bater nos carros e no gato laranja!
+            </p>
+            <p style="color: white; font-size: 20px;">
+                Arraste e solte os blocos, conecte-os e clique em **Rodar**!
+            </p>
+            
+        </div>
+    </div>
+
+    <button class="button1" id="btnComoJogar">
+    <a id="comojogarLink" href="#"> 
+        <img id="ftbotaocomo" src="img/comoJoga.png" alt="Como Jogar">
+    </a>
+</button>
+
+
+
+
         <button class="button2">
             <a id="voltaMenu" href="index.html">
                 <img id="ftbotaomenu" src="img/voltmenu.png" alt="home">
             </a>
         </button>
-
-
     </div>
     <div id="drag"></div>
     <button id="btn_rodar">Rodar</button>
