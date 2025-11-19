@@ -34,6 +34,10 @@ const toolbox = {
     },
     {
       kind: 'block',
+      type: 'cleared_path'
+    },
+    {
+      kind: 'block',
       type: 'go_forward'
     },
     {
@@ -50,10 +54,10 @@ const toolbox = {
 
 //--------definindo blocos novos-----------
 Blockly.common.defineBlocksWithJsonArray([{
-  "type": "hello_world",
-  "message0": 'hello world',
-  "colour": 160,
-  "previousStatement": null,
+  "type": "cleared_path",
+  "message0": 'caminho livre',
+  "colour": 315,
+  "output": "Boolean",
   "tooltip": "",
   "helpUrl": ""
 }]);
@@ -61,8 +65,8 @@ Blockly.common.defineBlocksWithJsonArray([{
 Blockly.common.defineBlocksWithJsonArray([{
   "type": "blocked_path",
   "message0": 'caminho bloqueado',
-  "colour": 300,
-  "output": null,
+  "colour": 315,
+  "output": "Boolean",
   "tooltip": "",
   "helpUrl": ""
 }]);
@@ -70,7 +74,7 @@ Blockly.common.defineBlocksWithJsonArray([{
 Blockly.common.defineBlocksWithJsonArray([{
   "type": "go_forward",
   "message0": 'siga em frente',
-  "colour": 210,
+  "colour": 255,
   "previousStatement": null,
   "nextStatement": null,
   "tooltip": "",
@@ -80,7 +84,7 @@ Blockly.common.defineBlocksWithJsonArray([{
 Blockly.common.defineBlocksWithJsonArray([{
   "type": "turn_left",
   "message0": 'vira para a esquerda',
-  "colour": 200,
+  "colour": 180,
   "previousStatement": null,
   "nextStatement": null,
   "tooltip": "",
@@ -90,7 +94,7 @@ Blockly.common.defineBlocksWithJsonArray([{
 Blockly.common.defineBlocksWithJsonArray([{
   "type": "turn_right",
   "message0": 'vira para a direita',
-  "colour": 200,
+  "colour": 180,
   "previousStatement": null,
   "nextStatement": null,
   "tooltip": "",
@@ -99,9 +103,50 @@ Blockly.common.defineBlocksWithJsonArray([{
 
 
 //------logica por tras dos blocos----------------------
-Blockly.JavaScript.forBlock["hello_world"] = () => {
-  return `console.log('Hello World')`;
-}
+Blockly.JavaScript.forBlock["blocked_path"] = () => {
+  const code = `
+    (()=>{
+      let checkX = playerX;
+      let checkY = playerY;
+
+      if (direcaoAtual === 'direita') checkX += step;
+      else if (direcaoAtual === 'esquerda') checkX -= step;
+      else if (direcaoAtual === 'cima') checkY -= step;
+      else if (direcaoAtual === 'baixo') checkY += step;
+
+      let gridCheck = {
+        x: Math.round(checkX / step),
+        y: Math.round(checkY / step)
+      };
+
+      return obstaculos.some(o => o.x === gridCheck.x && o.y === gridCheck.y);
+    })()
+  `;
+  return [code, Blockly.JavaScript.ORDER_ATOMIC];
+};
+
+
+Blockly.JavaScript.forBlock["cleared_path"] = () => {
+  const code = `
+    (()=>{
+      let checkX = playerX;
+      let checkY = playerY;
+
+      if (direcaoAtual === 'direita') checkX += step;
+      else if (direcaoAtual === 'esquerda') checkX -= step;
+      else if (direcaoAtual === 'cima') checkY -= step;
+      else if (direcaoAtual === 'baixo') checkY += step;
+
+      let gridCheck = {
+        x: Math.round(checkX / step),
+        y: Math.round(checkY / step)
+      };
+
+      return !obstaculos.some(o => o.x === gridCheck.x && o.y === gridCheck.y);
+    })()
+  `;
+  return [code, Blockly.JavaScript.ORDER_ATOMIC];
+};
 
 //segue em frente independente da direcao para qual a personagem está voltada
 Blockly.JavaScript.forBlock["go_forward"] = () => {
