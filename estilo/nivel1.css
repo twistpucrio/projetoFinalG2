@@ -271,12 +271,14 @@ body{
     z-index: 1001; 
 }
 
+
 .como-jogar-content {
+    /* --- ESTILOS DE APARÊNCIA RESTAURADOS --- */
     /* Fundo Vermelho e Borda Pixelada */
     background: #CC0000; /* Vermelho */
     color: white;
     border: 5px solid #FF3333; /* Vermelho mais claro para a borda */
-    /* Borda Pixelada: simula o efeito. Ajuste o tamanho do box-shadow se quiser mais 'pixels' */
+    /* Borda Pixelada: simula o efeito. */
     box-shadow: 
         0 0 0 4px #CC0000, /* Sombra interna para engrossar o vermelho */
         0 0 0 8px #FF3333, /* Camada 1 de pixelado */
@@ -286,8 +288,34 @@ body{
     
     /* Configurações de conteúdo (opcional) */
     max-width: 600px;
-    width: 80%;
-    position: relative;
+    width: 80%; /* Ajuste a largura, se necessário */
+    font-family: myFont;
+    font-size: 50pt;
+    /* ------------------------------------- */
+
+    /* --- ESTILOS DE POSICIONAMENTO E TRANSIÇÃO (NOVOS) --- */
+    
+    /* Posição inicial fora da tela (acima) */
+    transform: translateY(-100%); 
+    /* Inicia opaco */
+    opacity: 0;
+
+    /* Adiciona a transição suave */
+    transition: transform 0.5s ease-out, opacity 0.5s ease-out; 
+
+    /* Garante que o modal use a posição fixa do parent '.modal' */
+    position: absolute; 
+    top: 0; 
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto; /* Centraliza vertical e horizontalmente quando translateY(0) */
+}
+
+/* Estado FINAL (visível) para o modal com efeito de descida */
+.como-jogar-content.is-visible {
+    transform: translateY(0); /* Volta para a posição original (centralizado) */
+    opacity: 1; /* Fica totalmente visível */
 }
 
 /* Estilo para o botão 'X' de fechar */
