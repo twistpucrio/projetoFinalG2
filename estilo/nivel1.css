@@ -336,3 +336,26 @@ body{
     text-decoration: none;
     cursor: pointer;
 }
+
+
+.modal {
+    z-index: 999999 !important;
+}
+
+.modal-content {
+    z-index: 999999 !important;
+}
+
+#vitoriaModal, #gameOverModal {
+    z-index: 999999 !important;
+}
+
+.blocklyWidgetDiv,
+.blocklyTooltipDiv,
+.blocklyDropDownDiv {
+    z-index: 1 !important;
+}
+
+#blocklyDiv {
+    z-index: 1 !important;
+}

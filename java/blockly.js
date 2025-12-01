@@ -270,11 +270,25 @@ btnRodar.addEventListener("click", async () => {
   direcaoAtual = 'direita';
 
   //reseta a imagem da personagem
-  personagem.src = "img/entregadoraViradaDireita.png"
+  personagem.src = "img/entregadoraViradaDireita.png"; 
 
-  //dando um tempo para que ela nao apareça direto no destino final
+  controle =1; 
+
+  controle = 1;
+
+  // fechar modais visíveis (se houver)
+  const modalGameOver = document.getElementById("gameOverModal");
+  if (modalGameOver) modalGameOver.style.display = "none";
+  const vModal = document.getElementById("vitoriaModal");
+  if (vModal) vModal.style.display = "none";
+
+  // pequeno delay para evitar que a tela já esteja no destino visualmente
   await sleep(100);
   const script = Blockly.JavaScript.workspaceToCode(workspace);
   console.log(script);
+
+  // Executa o script gerado pelo Blockly dentro de uma IIFE async
   await eval(`(async () => { ${script} })()`);
+  verificarFimDoBlockly();
+
 });
