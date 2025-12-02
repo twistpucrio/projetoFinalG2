@@ -90,9 +90,11 @@ function abrirGameOver(){
     document.getElementById("gameOverModal").style.display = "flex";
     }
 
-    function abrirVitoria(){
-        controle =2; 
-        document.getElementById("vitoriaModal").style.display = "flex";
+function abrirVitoria() {
+    controle = 2;
+    document.getElementById("vitoriaModal").style.display = "flex";
+    const nivelAtual = document.body.getAttribute("data-nivel");
+    localStorage.setItem(`nivel${nivelAtual}`, "unlocked");
 }
 
 // Função para fechar o modal, limpar a imagem e reiniciar o jogador (sem recarregar)
@@ -160,7 +162,7 @@ document.addEventListener("keydown", (e) => {
     gridprox.y >= numRows
 ) {
     controle = 3;
-    abrirGameOver();
+    abrirGameOver2();
     return;
 }
 
