@@ -90,8 +90,21 @@ function abrirGameOver(){
     document.getElementById("gameOverModal").style.display = "flex";
     }
 
+function abrirGameOver2(){
+    controle =3; 
+    // 1. Obtém o elemento da imagem dentro do modal
+    const modalImage = document.getElementById("gameOverModalImage2");
+    
+    // 2. Define a imagem que deve aparecer
+    // O ID "gameOverModalImage" deve estar no seu HTML, como sugerido anteriormente.
+    modalImage.src = "img/naochegou.png";
+    
+    // 3. Exibe o modal
+    document.getElementById("gameOverModal2").style.display = "flex";
+}
+
 function abrirVitoria() {
-    controle = 2;
+    
     document.getElementById("vitoriaModal").style.display = "flex";
     const nivelAtual = document.body.getAttribute("data-nivel");
     localStorage.setItem(`nivel${nivelAtual}`, "unlocked");
@@ -103,7 +116,7 @@ function fecharGameOverEReiniciar() {
     document.getElementById("gameOverModalImage").src = "";
 
     // 2. Fecha o modal
-    document.getElementById("gameOverModal").style.display = "none";
+    document.getElementById("gameOverModal").style.display = "none"; 
 
     // 3. Reinicia a posição do jogador
     playerX = startColIndex * step; // 0px
@@ -121,7 +134,7 @@ function verificarFimDoBlockly() {
     let chegou = destino.some(d => d.x === gx && d.y === gy);
 
     if (!chegou && controle === 1) {
-        abrirGameOver();
+        abrirGameOver2();
     }
 }
 
@@ -154,7 +167,7 @@ document.addEventListener("keydown", (e) => {
         controle=3; 
         return; // bloqueia o movimento
     }
-
+/*
     if (
     gridprox.x < 0 ||
     gridprox.x >= numCols ||
@@ -164,7 +177,8 @@ document.addEventListener("keydown", (e) => {
     controle = 3;
     abrirGameOver2();
     return;
-}
+
+}*/
 
 
     // 2. Checa se chegou no destino
