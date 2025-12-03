@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Move</title>
+    <title>Move 🍕</title>
     <link rel="stylesheet" href="estilo/nivel1.css">
     <!-- Load Blockly core -->
     <script src="https://unpkg.com/blockly/blockly_compressed.js"></script>
@@ -37,18 +37,31 @@
         <div id="gameOverModal" class="modal">
             <div class="modal-content">
                 <img id="gameOverModalImage" src="img/titulo.png" alt="Game Over">
-                <h2>Oh não! Você bateu!</h2>
+                <h2>Oh não! Você bateu 😵‍💫!</h2>
                 <button onclick="fecharGameOverEReiniciar()">Reiniciar Partida</button>
                 <button onclick="window.location.href='index.html'">Voltar ao Menu</button>
                
             </div>
         </div>
+        
+         <!-- modal gameover (para quando nao chegar) -->
+        <div id="gameOverModal2" class="modal">
+            <div class="modal-content">
+                <img id="gameOverModalImage2" src="img/titulo.png" alt="Game Over">
+                <h2> Oh não! Você não chegou ao destino e comeu a pizza 😖!</h2>
+                <button onclick="fecharGameOverEReiniciar()">Reiniciar Partida</button>
+                <button onclick="window.location.href='index.html'">Voltar ao Menu</button>
+               
+            </div>
+        </div>
+        
 
 
         <!-- modal vitória -->
         <div id="vitoriaModal" class="modal">
             <div class="modal-content">
                 <img id="gameOverModalImage" src="img/ganhou.jpg" alt="You Win">
+                <h2> Uhuulll você chegou no seu destino 😄!</h2>
                 <button onclick="location.reload()">Jogar Novamente</button>
                 <button onclick="window.location.href='index.html'">Voltar ao Menu</button>
                  <!-- CRIAR BOTAO PROXIMO NIVEL!! -->
@@ -86,7 +99,9 @@
         </button>
     </div>
     <div id="drag"></div>
-    <button id="btn_rodar">Rodar</button>
+    <button id="btn_rodar">
+        <img id="ftbotaorodar" src="img/rodar.png" alt="Rodar">
+    </button>
 </body>
 
 </html>
