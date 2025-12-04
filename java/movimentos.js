@@ -78,7 +78,8 @@ const destino = [
 // --- FUNÇÕES MODAL ---
 
 function abrirGameOver(){
-    controle =3; 
+    console.log("abrirGameOver");
+    controle = 3; 
     // 1. Obtém o elemento da imagem dentro do modal
     const modalImage = document.getElementById("gameOverModalImage");
     
@@ -87,11 +88,12 @@ function abrirGameOver(){
     modalImage.src = "img/entregadoraCaida.png";
     
     // 3. Exibe o modal
-    document.getElementById("gameOverModal").style.display = "flex";
+    document.getElementById("gameOverModal").style.visibility = "visible";
     }
 
 function abrirGameOver2(){
-    controle =3; 
+    console.log("abrirGameOver2");
+    controle = 3; 
     // 1. Obtém o elemento da imagem dentro do modal
     const modalImage = document.getElementById("gameOverModalImage2");
     
@@ -100,23 +102,25 @@ function abrirGameOver2(){
     modalImage.src = "img/naochegou.png";
     
     // 3. Exibe o modal
-    document.getElementById("gameOverModal2").style.display = "flex";
+    document.getElementById("gameOverModal2").style.visibility = "visible";
 }
 
 function abrirVitoria() {
     
-    document.getElementById("vitoriaModal").style.display = "flex";
+    document.getElementById("vitoriaModal").style.visibility = "visible";
     const nivelAtual = document.body.getAttribute("data-nivel");
     localStorage.setItem(`nivel${nivelAtual}`, "unlocked");
 }
 
 // Função para fechar o modal, limpar a imagem e reiniciar o jogador (sem recarregar)
 function fecharGameOverEReiniciar() {
+    console.log("fecharGameOverEReiniciar");
     // 1. Limpa a fonte da imagem do modal (opcional, mas boa prática)
     document.getElementById("gameOverModalImage").src = "";
 
     // 2. Fecha o modal
-    document.getElementById("gameOverModal").style.display = "none"; 
+    document.getElementById("gameOverModal").style.visibility = "hidden"; 
+    document.getElementById("gameOverModal2").style.visibility = "hidden"; 
 
     // 3. Reinicia a posição do jogador
     playerX = startColIndex * step; // 0px
@@ -124,6 +128,9 @@ function fecharGameOverEReiniciar() {
     player.style.top = playerY + "px";
     player.style.left = playerX + "px";
     controle=1; 
+
+    direcaoAtual = 'direita';
+    personagem.src = "img/entregadoraViradaDireita.png";
     // Se quiser recarregar, use location.reload();
 }
 

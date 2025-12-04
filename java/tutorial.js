@@ -11,7 +11,7 @@ const spanClose = comoJogarModal ? comoJogarModal.querySelector('.close-button')
 function abrirComoJogarModal() {
     if (comoJogarModal && comoJogarContent) {
         // 1. Torna o modal-container visível (fundo preto) imediatamente
-        comoJogarModal.style.display = 'flex'; 
+        comoJogarModal.style.visibility = 'visible'; 
         
         // 2. Após um pequeno delay, adiciona a classe que ativa a transição (descida)
         // Isso garante que o navegador reconheça o estado inicial (translateY(-100%)) antes de mudar para o estado final (translateY(0))
@@ -30,7 +30,7 @@ function fecharComoJogarModal() {
         // 2. Espera a transição terminar antes de ocultar o modal-container
         // O tempo deve ser igual ao tempo de transição no CSS (0.5s = 500ms)
         comoJogarContent.addEventListener('transitionend', function handler() {
-            comoJogarModal.style.display = 'none';
+            comoJogarModal.style.visibility = 'hidden';
             // IMPORTANTE: Remove o listener para evitar execuções futuras
             comoJogarContent.removeEventListener('transitionend', handler); 
         });
