@@ -148,35 +148,50 @@ Blockly.JavaScript.forBlock["cleared_path"] = () => {
   return [code, Blockly.JavaScript.ORDER_ATOMIC];
 };
 
+async function  go_forward(){
+  await sleep(400); // espera 400 ms entre movimentos
+  nextX = playerX;
+  nextY = playerY;
+
+  if (direcaoAtual === 'direita') nextX += step;
+  else if (direcaoAtual === 'esquerda') nextX -= step;
+  else if (direcaoAtual === 'cima') nextY -= step;
+  else if (direcaoAtual === 'baixo') nextY += step;
+
+  var gridprox = {
+    x: Math.round(nextX / step),
+    y: Math.round(nextY / step)
+  };
+
+  if (obstaculos.some(o => o.x === gridprox.x && o.y === gridprox.y)) {
+    console.log("perdeu pq atingiu um obstaculo");
+    abrirGameOver();
+    return false;
+  } else if (destino.some(d => d.x === gridprox.x && d.y === gridprox.y)) {
+
+    abrirVitoria();
+    return false;
+  } 
+  else if (nextX < limitMinH || nextX > limitMaxH || nextY < limitMinV || nextY > limitMaxV ){
+    console.log("perdeu pq saiu da pista");
+    abrirGameOver();
+    return false;
+  }  
+  
+  playerX = nextX;
+  playerY = nextY;
+  player.style.left = playerX + "px";
+  player.style.top = playerY + "px";
+  return true;
+}
+
 //segue em frente independente da direcao para qual a personagem está voltada
 Blockly.JavaScript.forBlock["go_forward"] = () => {
   return `
-    await sleep(400); // espera 400 ms entre movimentos
-    nextX = playerX;
-    nextY = playerY;
-
-    if (direcaoAtual === 'direita') nextX += step;
-    else if (direcaoAtual === 'esquerda') nextX -= step;
-    else if (direcaoAtual === 'cima') nextY -= step;
-    else if (direcaoAtual === 'baixo') nextY += step;
-
-    var gridprox = {
-      x: Math.round(nextX / step),
-      y: Math.round(nextY / step)
-    };
-
-    if (obstaculos.some(o => o.x === gridprox.x && o.y === gridprox.y)) {
-      abrirGameOver();
+    if(!await go_forward()){
       return;
-    } else if (destino.some(d => d.x === gridprox.x && d.y === gridprox.y)) {
-      abrirVitoria();
-      return;
-    } else {
-      playerX = nextX;
-      playerY = nextY;
-      player.style.left = playerX + "px";
-      player.style.top = playerY + "px";
     }
+    
   `;
 };
 
@@ -232,7 +247,10 @@ Blockly.JavaScript.forBlock["turn_right"] = () => {
 
 //onde adicionamos a toolbox no espaco da div
 const workspace = Blockly.inject(document.getElementById('drag'), {
-  toolbox
+  toolbox, 
+  maxInstances: {
+    go_forward: 3
+  }
 });
 
 
@@ -278,9 +296,9 @@ btnRodar.addEventListener("click", async () => {
 
   // fechar modais visíveis (se houver)
   const modalGameOver = document.getElementById("gameOverModal");
-  if (modalGameOver) modalGameOver.style.display = "none";
+  if (modalGameOver) modalGameOver.style.visibility = "hidden";
   const vModal = document.getElementById("vitoriaModal");
-  if (vModal) vModal.style.display = "none";
+  if (vModal) vModal.style.visibility = "hidden";
 
   // pequeno delay para evitar que a tela já esteja no destino visualmente
   await sleep(100);

@@ -15,7 +15,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // mostra modal de vitória (se existir)
     const modal = document.getElementById("vitoriaModal");
-    if (modal) modal.style.display = "flex";
+    if (modal) modal.style.visibility = "visible";
   };
 
   // função que pode ser chamada no botão "Voltar ao menu" do modal
@@ -27,7 +27,7 @@ document.addEventListener("DOMContentLoaded", () => {
   // fechar modal
   window.fecharModalVitoria = function() {
     const modal = document.getElementById("vitoriaModal");
-    if (modal) modal.style.display = "none";
+    if (modal) modal.style.visibility = "hidden";
   };
 
 });

@@ -141,7 +141,8 @@ body{
 
 
 .modal{
-  display: none;
+  display: flex;
+  visibility: hidden;
   position: fixed;
   top:0;
   left:0;
