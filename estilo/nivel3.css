@@ -95,18 +95,16 @@ body{
 }
 
 #carro2{
-  /* margin-left: 697px; -> Mude para 'left' */
-  /* margin-top: 95px; -> Mude para 'top' */
-  left: 697px; 
-  top: 95px; 
+    transform: translate(-25px, 18px);
 }
 
 /* --- CARRO ROSA --- */
 #carro1{
-  /* margin-left: 297px; -> Mude para 'left' */
-  /* margin-top: 330px; -> Mude para 'top' */
-  left: 297px; 
-  top: 330px;
+  transform: translate(-25px, 13px);
+}
+
+#carro3{
+  transform: translate(-30px)
 }
 
 #gato{
@@ -141,8 +139,7 @@ body{
 
 
 .modal{
-  display: flex;
-  visibility: hidden;
+  display: none;
   position: fixed;
   top:0;
   left:0;
