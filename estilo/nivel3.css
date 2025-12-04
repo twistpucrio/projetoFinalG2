@@ -261,16 +261,8 @@ body{
 
 #btn_rodar{
   position: absolute;
-  top: 780px;
-  right: 180px;
-  background: none;
-}
-
-#btn_rodar img {
-    width: 80px;
-    height: auto;
-    image-rendering: pixelated;
-    cursor: pointer;
+  top: 95%;
+  left: 3%;
 }
 
 /* Estilo específico do novo modal 'Como Jogar' */
