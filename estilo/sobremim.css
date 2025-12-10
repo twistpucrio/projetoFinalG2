@@ -1,0 +1,111 @@
+@font-face {
+  font-family: myFont;
+  src: url(../fonts/Inspiration,Jersey_15,SUSE_Mono/Jersey_15/Jersey15-Regular.ttf) format('truetype');
+}
+
+body{
+    background-color: rgb(133, 191, 214) ;
+    text-align: center; 
+}
+
+#main-content {
+    /* Define uma largura para o bloco onde a imagem e o texto residem */
+    width: 95%; 
+    /* Centraliza este bloco horizontalmente na tela */
+    margin: 30px auto; 
+    /* Sobrescreve o text-align: center do body para que o texto interno comece à esquerda */
+    text-align: left; 
+}
+
+.voltaraomenu{
+    position: absolute;
+    left: 50px;
+    top: 80px;
+    border: none;
+    background: none;
+    cursor: pointer;
+}
+
+#ftbotaocomo{
+    width: 200px;
+    height: auto;
+}
+
+.title{
+    font-family: myFont;
+    color: white;
+    font-size: 100pt;
+    display: inline-block;
+    text-align: center;
+    background: #CC0000; /* Vermelho */
+    border: 2px solid #FF3333; /* Vermelho mais claro para a borda */
+    /* Borda Pixelada: simula o efeito. */
+    box-shadow: 
+        0 0 0 4px #CC0000, /* Sombra interna para engrossar o vermelho */
+        0 0 0 8px #FF3333, /* Camada 1 de pixelado */
+        4px 4px 0 12px #990000, /* Camada 2 de pixelado (deslocada para simular o efeito) */
+        -4px -4px 0 12px #990000;
+    padding: 20px;
+}
+
+#imagemesq {
+    /* 🔑 MUDANÇA ESSENCIAL: Permite que o texto flua ao lado da imagem */
+    float: left;
+    /* Adiciona um espaço à direita para separar a imagem do parágrafo */
+    margin-right: 20px;
+    /* Adiciona um espaço acima (opcional, para afastá-lo do título) */
+    margin-top: 0px; 
+    
+    /* REMOVA: position: absolute; */
+    /* REMOVA: top: 500px; */
+    /* REMOVA: left: 60px; */ 
+
+    background: #CC0000;
+    border: 150px solid #FF3333; /* Observação: 150px de borda é MUITO grande! Revise se é isso mesmo. */
+    box-shadow: 
+        0 0 0 4px #CC0000,
+        0 0 0 8px #FF3333,
+        4px 4px 0 12px #990000,
+        -4px -4px 0 12px #990000;
+    padding: 20px;
+}
+
+#imagemdir{
+        float: right;
+    /* Adiciona um espaço à direita para separar a imagem do parágrafo */
+    margin-left: 20px;
+    /* Adiciona um espaço acima (opcional, para afastá-lo do título) */
+    margin-top: 0px; 
+    
+    /* REMOVA: position: absolute; */
+    /* REMOVA: top: 500px; */
+    /* REMOVA: left: 60px; */ 
+
+    background: #CC0000;
+    border: 150px solid #FF3333; /* Observação: 150px de borda é MUITO grande! Revise se é isso mesmo. */
+    box-shadow: 
+        0 0 0 4px #CC0000,
+        0 0 0 8px #FF3333,
+        4px 4px 0 12px #990000,
+        -4px -4px 0 12px #990000;
+    padding: 20px;
+}
+
+#main-content p {
+    /* Define o fundo e a cor do texto para contraste */
+    background-color: #CC0000; /* O mesmo vermelho do seu título */
+    color: white;
+    border: 123px solid #FF3333; 
+    box-shadow: 
+        0 0 0 4px #CC0000,
+        0 0 0 8px #FF3333,
+        4px 4px 0 12px #990000,
+        -4px -4px 0 12px #990000;
+    padding: 20px;
+}
+
+/* 🔑 3. ADIÇÃO: Estilo para garantir que elementos posteriores fiquem abaixo dos flutuados */
+/* Isso se aplica à div vazia que deve ser inserida após o parágrafo/imagem no HTML. */
+.clearfix {
+    clear: both;
+}

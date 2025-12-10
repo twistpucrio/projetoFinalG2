@@ -275,16 +275,18 @@ body{
     cursor: pointer;
 }
 
-#btn_rodar img{
-    position: absolute;
-    bottom: 75px;
-    right: 230px; /* distância do canto esquerdo */
-    background: none;
-    border: none;
-    padding: 0;
-    width: 100px;
-    height: auto;
-    image-rendering: pixelated;
+#btn_rodar {
+    /* Use 'fixed' para fixar o botão no canto da TELA, 
+       independente do tamanho do seu #drag gigante (98em) */
+    position: fixed; 
+    bottom: 35px;
+    right: 35px; /* Use 'right' para garantir que ele esteja no canto direito */
+    z-index: 10000; /* Garante que fique acima de todos os elementos */
+    
+    /* Demais estilos para formatar o botão */
+    background: none; 
+    border: none; 
+    padding: 0; 
     cursor: pointer;
 }
 

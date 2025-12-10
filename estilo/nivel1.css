@@ -163,8 +163,8 @@
 
 #btn_rodar img{
     position: absolute;
-    bottom: 75px;
-    right: 230px; /* distância do canto esquerdo */
+    bottom: 35px;
+    left: 1580px; /* distância do canto esquerdo */
     background: none;
     border: none;
     padding: 0;
