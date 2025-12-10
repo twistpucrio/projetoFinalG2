@@ -21,7 +21,7 @@
     /* margin-left: 297px; -> Mude para 'left' */
     /* margin-top: 330px; -> Mude para 'top' */
     left: 295px; 
-    top: 230px;
+    top: 250px;
   }
   
   #carro3{
@@ -38,8 +38,8 @@
   
   
   #carro5{
-      left: 1100px; 
-      top: 330px;
+      left: 775px; 
+      top: 250px;
   }
   
   #gato{
@@ -50,6 +50,6 @@
   }
   
   #dog{
-      left: 790px; 
+      left: 1193px; 
       top: 380px; 
   }
