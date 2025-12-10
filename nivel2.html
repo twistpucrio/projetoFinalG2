@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="pt">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Move 🍕</title>
+    <link rel="stylesheet" href="estilo/nivel2.css">
+    <!-- Load Blockly core -->
+    <script src="https://unpkg.com/blockly/blockly_compressed.js"></script>
+    <!-- Load the default blocks -->
+    <script src="https://unpkg.com/blockly/blocks_compressed.js"></script>
+    <!-- Load a generator -->
+    <script src="https://unpkg.com/blockly/javascript_compressed.js"></script>
+    <!-- Load a message file -->
+    <script src="https://unpkg.com/blockly/msg/en.js"></script>
+    <script src="java/blockly.js" defer></script>
+    <script src="java/nivel2.js" defer></script>
+    <script src="java/tutorial.js" defer></script>
+    <script src="java/mapa.js" defer></script>
+    <script src="java/niveis.js" defer></script>
+</head>
+
+<body data-nivel="1">
+    <div id="grid">
+        <img id="arbustos2" src="img/arbusto2.png" alt="arbustos2">
+        <img id="player" src="img/entregadoraViradaDireita.png" alt="player">
+        <img id="arbustos1" src="img/arbusto1.png" alt="arbustos1">
+        <img id="carro1" class="carro" src="img/carro rosa.png" alt="carrorosa">
+        <img id="carro2" class="carro" src="img/carro roxo.png" alt="carroroxo">
+        <img id="carro3" class="carro" src="img/carro roxo 2.png" alt="carroroxo">
+        <img id="carro4" class="carro" src="img/carro rosa 2.png" alt="carrorosa">
+        <img id="gato" class="pet" src="img/gato laranja.png" alt="gatolaranja">
+        <img id="gato2" class="pet" src="img/gato laranja 2.png" açt="gato2">
+        <img id="casa" class="destino" src="img/CasaRosa.png" alt="casaRosa">
+
+
+
+        <!-- modal gameover -->
+        <div id="gameOverModal" class="modal">
+            <div class="modal-content">
+                <img id="gameOverModalImage" src="img/titulo.png" alt="Game Over">
+                <h2>Oh não! Você bateu 😵‍💫!</h2>
+                <button onclick="fecharGameOverEReiniciar()">Reiniciar Partida</button>
+                <button onclick="window.location.href='index.html'">Voltar ao Menu</button>
+               
+            </div>
+        </div>
+        
+         <!-- modal gameover (para quando nao chegar) -->
+        <div id="gameOverModal2" class="modal">
+            <div class="modal-content">
+                <img id="gameOverModalImage2" src="img/titulo.png" alt="Game Over">
+                <h2> Oh não! Você não chegou ao destino e comeu a pizza 😖!</h2>
+                <button onclick="fecharGameOverEReiniciar()">Reiniciar Partida</button>
+                <button onclick="window.location.href='index.html'">Voltar ao Menu</button>
+               
+            </div>
+        </div>
+        
+
+
+        <!-- modal vitória -->
+        <div id="vitoriaModal" class="modal">
+            <div class="modal-content">
+                <img id="gameOverModalImage" src="img/ganhou.jpg" alt="You Win">
+                <h2> Uhuulll você chegou no seu destino 😄!</h2>
+                <button onclick="location.reload()">Jogar Novamente</button>
+                <button onclick="window.location.href='index.html'">Voltar ao Menu</button>
+                 <!-- CRIAR BOTAO PROXIMO NIVEL!! -->
+            </div>
+        </div>
+
+
+
+            
+            <div id="comoJogarModal" class="modal como-jogar-modal">
+        <div class="modal-content como-jogar-content">
+            <span class="close-button">&times;</span> 
+            
+            <h2 style="color: white;">🕹️ Como Jogar</h2>
+            <p style="color: white; font-size: 20px;">
+                Bem vindo ao Code Her Way! Seu objetivo é entregar a pizza na casa sem bater em obstáculos. Use os blocos de código para programar os movimentos da entregadora. Arraste os blocos para a área de programação e conecte-os na ordem correta para chegar ao destino. Clique em Rodar para ver o que acontece!
+            </p>
+            
+        </div>
+    </div>
+
+    <button class="button1" id="btnComoJogar">
+    <a id="comojogarLink" href="#"> 
+        <img id="ftbotaocomo" src="img/comoJoga.png" alt="Como Jogar">
+    </a>
+</button>
+
+
+
+
+        <button class="button2">
+            <a id="voltaMenu" href="index.html">
+                <img id="ftbotaomenu" src="img/voltmenu.png" alt="home">
+            </a>
+        </button>
+    </div>
+    <div id="drag"></div>
+    <button id="btn_rodar">
+        <img id="ftbotaorodar" src="img/rodar.png" alt="Rodar">
+    </button>
+</body>
+
+</html>

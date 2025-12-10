@@ -1,3 +1,92 @@
+@font-face {
+  font-family: myFont;
+  src: url(../fonts/Inspiration,Jersey_15,SUSE_Mono/Jersey_15/Jersey15-Regular.ttf) format('truetype');
+}
+
+body{
+  background-color: rgb(133, 191, 214) ;
+}
+
+#grid {
+  position: relative;
+  width: 1580px;
+  height: 560px;
+  margin: 10px auto;
+  border: 2px solid #aaa;
+  border-radius: 10px;
+
+  /* cria o padrão quadriculado */
+  background-image: 
+    linear-gradient(to right, #817e7e 1px, transparent 1px),
+    linear-gradient(to bottom,#817e7e 1px, transparent 1px);
+  background-size: 80px 80px; /* tamanho de cada célula */
+  background-color: #a7a2a2;
+}
+
+#player{
+    width: 80px;
+    height: 95px; 
+    position:absolute; 
+
+}
+
+
+/* garante que o container do Blockly possa rolar */
+#drag {
+  width: 98em;
+  height: 17em;      /* ajuste se precisar */
+  margin: 1em auto;
+  background-color: #e4eef2;
+  border: rgb(134, 162, 185) 0.5em solid;
+  border-radius: 8px;
+
+  overflow: auto;    /* ATENÇÃO: precisa ser 'auto' ou 'scroll' */
+  position: relative; /* importante para referência */
+}
+
+/* força o flyout (toolbox) a permitir scroll — usa !important porque Blockly injeta estilos inline/SVG */
+.blocklyFlyout {
+  overflow-y: auto !important;
+  overflow-x: hidden !important;
+  max-height: 100% !important;
+}
+
+/* ajusta o SVG onde o Blockly desenha os blocos (ajuda em alguns casos) */
+.blocklySvg {
+  height: 100% !important;
+  width: 100% !important;
+}
+
+/* aparência do scroll (opcional, só estética) */
+#drag::-webkit-scrollbar { width: 10px; }
+#drag::-webkit-scrollbar-track { background: #cbd6dd; border-radius: 10px; }
+#drag::-webkit-scrollbar-thumb { background: #4b9bd3; border-radius: 10px; }
+
+
+
+
+#arbustos1{
+   width: 1580px; 
+    height: 220px; 
+    position: absolute; /* Alterado de 'fixed' para 'absolute' */
+    left: 0;
+    right: 0;
+    margin: 0 auto; /* Centralização horizontal correta */
+    bottom: 0; /* Encosta na parte inferior da grid */
+    border-radius: 10px;
+}
+
+
+#arbustos2{
+    width: 1580px; 
+    height: 220px; 
+    position: absolute; /* Alterado de 'fixed' para 'absolute' */
+    left: 0;
+    right: 0;
+    margin: 0 auto; /* Centralização horizontal correta */
+    top: 0; /* Encosta na parte superior da grid */
+    border-radius: 10px;
+}
 
 .carro{
   width: 190px; 
@@ -8,25 +97,50 @@
 #carro2{
   /* margin-left: 697px; -> Mude para 'left' */
   /* margin-top: 95px; -> Mude para 'top' */
-  left: 697px; 
-  top: 95px; 
+  left: 137px; 
+  top: 178px; 
 }
 
 /* --- CARRO ROSA --- */
 #carro1{
   /* margin-left: 297px; -> Mude para 'left' */
   /* margin-top: 330px; -> Mude para 'top' */
-  left: 297px; 
-  top: 330px;
+  left: 457px; 
+  top: 95px;
 }
 
 #gato{
   /* margin-left: 1115px; -> Mude para 'left' */
   /* margin-top: 300px; -> Mude para 'top' */
-  left: 1115px; 
-  top: 300px; 
+  left: 1200px; 
+  top: 65px; 
 }
 
+#gato2{
+    left: 800px;
+    top: 300px;
+}
+
+#carro3{
+    left:777px;
+    top: 178px;
+}
+
+#carro4{
+    left: 1177px;
+    top: 333px;
+}
+
+.destino{
+  position: absolute;
+  /* margin: 0 auto; -> Remova, pois 'left' e 'top' controlam a posição */
+  /* margin-left: 1450px; -> Mude para 'left' */
+  /* margin-top: -43px; -> Mude para 'top' */
+  left: 1450px; 
+  top: -43px; 
+  width: 270px; 
+  height: 680px; 
+}
 
 .pet{
   width: 80px; 
