@@ -10,6 +10,20 @@ body{
     height: 100vh;
 }
 
+.voltaraomenu{
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    border: none;
+    background: none;
+    cursor: pointer;
+}
+
+#ftbotaocomo{
+    width: 200px;
+    height: auto;
+}
+
 
 .pizzaNivel{
     width: 18em;
