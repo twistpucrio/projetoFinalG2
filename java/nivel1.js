@@ -1,3 +1,5 @@
+
+
 const obstaculos = [
     // --- Carro Roxo (Começa na Coluna 10, Índice 9 | Linhas 2, 3, 4)
     
@@ -19,3 +21,35 @@ const obstaculos = [
 
     
 ];
+
+
+//blockly
+const toolbox = {
+  // There are two kinds of toolboxes. The simpler one is a flyout toolbox.
+  kind: 'flyoutToolbox',
+  // -----Blocos de comando ------------
+  contents: [
+    {
+      kind: 'block',
+      type: 'controls_repeat'
+    },
+    
+    {
+      kind: 'block',
+      type: 'go_forward'
+    },
+    {
+      kind: 'block',
+      type: 'turn_left'
+    },
+    {
+      kind: 'block',
+      type: 'turn_right'
+    }
+  ]
+};
+
+//onde adicionamos a toolbox no espaco da div e fazemos limites
+const workspace = Blockly.inject(document.getElementById('drag'), {
+  toolbox
+});
