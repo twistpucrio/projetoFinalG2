@@ -1,0 +1,55 @@
+.carro{
+    width: 190px; 
+    height: 200px; 
+    position: absolute;
+  }
+  
+  #carro2{
+    /* margin-left: 697px; -> Mude para 'left' */
+    /* margin-top: 95px; -> Mude para 'top' */
+    left: 1090px; 
+    top: 20px; 
+  }
+  
+  #carro22{
+    left: 380px; 
+    top: 100px; 
+  }
+  
+  /* --- CARRO ROSA --- */
+  #carro1{
+    /* margin-left: 297px; -> Mude para 'left' */
+    /* margin-top: 330px; -> Mude para 'top' */
+    left: 295px; 
+    top: 230px;
+  }
+  
+  #carro3{
+    /* margin-left: 297px; -> Mude para 'left' */
+    /* margin-top: 330px; -> Mude para 'top' */
+    left: 775px; 
+    top: 250px;
+  }
+  
+  #carro4{
+      left: 130px; 
+      top: 170px;
+  }
+  
+  
+  #carro5{
+      left: 1100px; 
+      top: 330px;
+  }
+  
+  #gato{
+    /* margin-left: 1115px; -> Mude para 'left' */
+    /* margin-top: 300px; -> Mude para 'top' */
+    left: 630px; 
+    top: 220px; 
+  }
+  
+  #dog{
+      left: 790px; 
+      top: 380px; 
+  }
