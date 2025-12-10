@@ -126,67 +126,6 @@ function verificarFimDoBlockly() {
 
 // --- LÓGICA DE MOVIMENTO PRINCIPAL (BLOCO ÚNICO) ---
 
-document.addEventListener("keydown", (e) => {
-    if(controle !== 1) return; // bloqueia movimento se não estiver jogando
-
-    if (["ArrowUp", "ArrowDown", "ArrowLeft", "ArrowRight"].includes(e.key)) {
-        e.preventDefault(); 
-    }
-
-    let nextX=playerX;
-    let nextY=playerY;
-
-    if (e.key === "ArrowUp") nextY -= step;
-    if (e.key === "ArrowDown") nextY += step;
-    if (e.key === "ArrowLeft") nextX -= step;
-    if (e.key === "ArrowRight") nextX += step;
-
-    // CÁLCULO DA PRÓXIMA POSIÇÃO DA GRID (0-indexada)
-    let gridprox={
-        x: getGridCoord(nextX), 
-        y: getGridCoord(nextY)
-    };
-
-    // 1. Checa colisão com obstáculos
-        if (obstaculos.some(o => o.x === gridprox.x && o.y === gridprox.y)) {
-        controle=3; 
-        return; // bloqueia o movimento
-    }
-/*
-    if (
-    gridprox.x < 0 ||
-    gridprox.x >= numCols ||
-    gridprox.y < 0 ||
-    gridprox.y >= numRows
-) {
-    controle = 3;
-    abrirGameOver2();
-    return;
-
-}*/
-
-
-    // 2. Checa se chegou no destino
-    if (destino.some(d => d.x === gridprox.x && d.y === gridprox.y)) {
-        controle=2; 
-    return;
-    }
-
-
-    // 3. Atualiza a posição da boneca (Movimento instantâneo/teletransporte)
-    playerX = nextX;
-    playerY = nextY;
-    player.style.top = playerY + "px";
-    player.style.left = playerX + "px";
-
-    console.log(`Posição em Pixels: (${playerX}, ${playerY}) | Posição na Grid (0-index): (${gridprox.x}, ${gridprox.y})`);
-    if(controle === 2){
-        abrirVitoria(); 
-    }
-    if(controle === 3){
-        abrirGameOver();
-    }
-}); // ⬅️ Fechamento correto do evento
 
 let gridFinal = {
     x: Math.round(playerX / step),

@@ -3,54 +3,7 @@ let direcaoAtual = 'direita';
 
 const personagem = document.getElementById("player");
 
-const toolbox = {
-  // There are two kinds of toolboxes. The simpler one is a flyout toolbox.
-  kind: 'flyoutToolbox',
-  // -----Blocos de comando ------------
-  contents: [
-    {
-      kind: 'block',
-      type: 'controls_if'
-    },/*
-    {
-      kind: 'block',
-      type: 'controls_whileUntil'
-    },
-    {
-      kind: 'block',
-      type: 'hello_world'
-    },
-    {
-      kind: 'block',
-      type: 'math_number'
-    },*/
-    {
-      kind: 'block',
-      type: 'controls_repeat'
-    },
-    {
-      kind: 'block',
-      type: 'blocked_path'
-    },
-    {
-      kind: 'block',
-      type: 'cleared_path'
-    },
-    {
-      kind: 'block',
-      type: 'go_forward'
-    },
-    {
-      kind: 'block',
-      type: 'turn_left'
-    },
-    {
-      kind: 'block',
-      type: 'turn_right'
-    }
-    // Modificar aqui para mais blocos
-  ]
-};
+
 
 //--------definindo blocos novos-----------
 Blockly.common.defineBlocksWithJsonArray([{
@@ -244,14 +197,6 @@ Blockly.JavaScript.forBlock["turn_right"] = () => {
     } 
   `;
 };
-
-//onde adicionamos a toolbox no espaco da div
-const workspace = Blockly.inject(document.getElementById('drag'), {
-  toolbox, 
-  maxInstances: {
-    go_forward: 3
-  }
-});
 
 
 // pequeno timeout para garantir que o flyout foi criado

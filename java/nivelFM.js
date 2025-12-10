@@ -22,3 +22,52 @@ const obstaculos = [
      //Muito longe do destino 
       {x: 18, y: 6}, //linha 5
 ];
+
+
+//blockly
+const toolbox = {
+  // There are two kinds of toolboxes. The simpler one is a flyout toolbox.
+  kind: 'flyoutToolbox',
+  // -----Blocos de comando ------------
+  contents: [
+    {
+      kind: 'block',
+      type: 'controls_if'
+    },
+    {
+      kind: 'block',
+      type: 'controls_repeat'
+    },
+    {
+      kind: 'block',
+      type: 'blocked_path'
+    },
+    {
+      kind: 'block',
+      type: 'cleared_path'
+    },
+    {
+      kind: 'block',
+      type: 'go_forward'
+    },
+    {
+      kind: 'block',
+      type: 'turn_left'
+    },
+    {
+      kind: 'block',
+      type: 'turn_right'
+    }
+  ]
+};
+
+
+//onde adicionamos a toolbox no espaco da div e fazemos limites
+const workspace = Blockly.inject(document.getElementById('drag'), {
+  toolbox, 
+  maxInstances: {
+    go_forward: 4,
+    controls_repeat: 1,
+    controls_if: 2
+  }
+});
