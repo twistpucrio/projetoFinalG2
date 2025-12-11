@@ -1,70 +1,68 @@
 @font-face {
-    font-family: myFont;
-    src: url(../fonts/Inspiration,Jersey_15,SUSE_Mono/Jersey_15/Jersey15-Regular.ttf) format('truetype');
-  }
-  
-  body{
-    background-color: rgb(133, 191, 214) ;
-  }
-  
-  #grid {
-    position: relative;
-    width: 1580px;
-    height: 560px;
-    margin: 10px auto;
-    border: 2px solid #aaa;
-    border-radius: 10px;
-  
-    /* cria o padrão quadriculado */
-    background-image: 
-      linear-gradient(to right, #817e7e 1px, transparent 1px),
-      linear-gradient(to bottom,#817e7e 1px, transparent 1px);
-    background-size: 80px 80px; /* tamanho de cada célula */
-    background-color: #a7a2a2;
-  }
-  
-  #player{
-      width: 80px;
-      height: 95px; 
-      position:absolute; 
-  
-  }
-  
-  
-  /* garante que o container do Blockly possa rolar */
-  #drag {
-    width: 98em;
-    height: 17em;      /* ajuste se precisar */
-    margin: 1em auto;
-    background-color: #e4eef2;
-    border: rgb(134, 162, 185) 0.5em solid;
-    border-radius: 8px;
-  
-    overflow: auto;    /* ATENÇÃO: precisa ser 'auto' ou 'scroll' */
-    position: relative; /* importante para referência */
-  }
-  
-  /* força o flyout (toolbox) a permitir scroll — usa !important porque Blockly injeta estilos inline/SVG */
-  .blocklyFlyout {
-    overflow-y: auto !important;
-    overflow-x: hidden !important;
-    max-height: 100% !important;
-  }
-  
-  /* ajusta o SVG onde o Blockly desenha os blocos (ajuda em alguns casos) */
-  .blocklySvg {
-    height: 100% !important;
-    width: 100% !important;
-  }
-  
-  /* aparência do scroll (opcional, só estética) */
-  #drag::-webkit-scrollbar { width: 10px; }
-  #drag::-webkit-scrollbar-track { background: #cbd6dd; border-radius: 10px; }
-  #drag::-webkit-scrollbar-thumb { background: #4b9bd3; border-radius: 10px; }
-  
-  
-  
-  
+  font-family: myFont;
+  src: url(../fonts/Inspiration,Jersey_15,SUSE_Mono/Jersey_15/Jersey15-Regular.ttf) format('truetype');
+}
+
+body{
+  background-color: rgb(133, 191, 214) ;
+}
+
+#grid {
+  position: relative;
+  width: 1580px;
+  height: 560px;
+  margin: 10px auto;
+  border: 2px solid #aaa;
+  border-radius: 10px;
+
+  /* cria o padrão quadriculado */
+  background-image: 
+    linear-gradient(to right, #817e7e 1px, transparent 1px),
+    linear-gradient(to bottom,#817e7e 1px, transparent 1px);
+  background-size: 80px 80px; /* tamanho de cada célula */
+  background-color: #a7a2a2;
+}
+
+#player{
+    width: 80px;
+    height: 95px; 
+    position:absolute; 
+
+}
+
+
+/* garante que o container do Blockly possa rolar */
+#drag {
+  width: 98em;
+  height: 17em;      /* ajuste se precisar */
+  margin: 1em auto;
+  background-color: #e4eef2;
+  border: rgb(134, 162, 185) 0.5em solid;
+  border-radius: 8px;
+
+  overflow: auto;    /* ATENÇÃO: precisa ser 'auto' ou 'scroll' */
+  position: relative; /* importante para referência */
+}
+
+/* força o flyout (toolbox) a permitir scroll — usa !important porque Blockly injeta estilos inline/SVG */
+.blocklyFlyout {
+  overflow-y: auto !important;
+  overflow-x: hidden !important;
+  max-height: 100% !important;
+}
+
+/* ajusta o SVG onde o Blockly desenha os blocos (ajuda em alguns casos) */
+.blocklySvg {
+  height: 100% !important;
+  width: 100% !important;
+}
+
+/* aparência do scroll (opcional, só estética) */
+#drag::-webkit-scrollbar { width: 10px; }
+#drag::-webkit-scrollbar-track { background: #cbd6dd; border-radius: 10px; }
+#drag::-webkit-scrollbar-thumb { background: #4b9bd3; border-radius: 10px; }
+
+
   #arbustos1{
      width: 1580px; 
       height: 220px; 
@@ -228,10 +226,17 @@
   
   #btn_rodar{
     position: absolute;
-    top: 95%;
-    left: 3%;
+    top: 780px;
+    right: 180px;
+    background: none;
   }
   
+  #btn_rodar img {
+      width: 80px;
+      height: auto;
+      image-rendering: pixelated;
+      cursor: pointer;
+  }
   /* Estilo específico do novo modal 'Como Jogar' */
   .como-jogar-modal {
       /* Garante que o modal fique visível acima de tudo */
