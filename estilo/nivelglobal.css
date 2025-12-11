@@ -34,7 +34,7 @@ body{
 /* garante que o container do Blockly possa rolar */
 #drag {
   width: 98em;
-  height: 17em;      /* ajuste se precisar */
+  height: 20em;      /* ajuste se precisar */
   margin: 1em auto;
   background-color: #e4eef2;
   border: rgb(134, 162, 185) 0.5em solid;
@@ -46,7 +46,7 @@ body{
 
 /* força o flyout (toolbox) a permitir scroll — usa !important porque Blockly injeta estilos inline/SVG */
 .blocklyFlyout {
-  overflow-y: auto !important;
+  overflow-y: auautoo !important;
   overflow-x: hidden !important;
   max-height: 100% !important;
 }
