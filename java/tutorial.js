@@ -1,77 +1,149 @@
-// Localiza os elementos usando os IDs/Classes atualizados
-const comoJogarModal = document.getElementById('comoJogarModal');
-// CORREÇÃO: Seleciona o botão usando o ID que adicionamos ao <button> no HTML
-const btnComoJogar = document.getElementById('btnComoJogar'); 
-// Seleciona o CONTEÚDO do modal para aplicar a transição
-const comoJogarContent = comoJogarModal ? comoJogarModal.querySelector('.como-jogar-content') : null;
-// Seleciona o botão de fechar dentro do modal
-const spanClose = comoJogarModal ? comoJogarModal.querySelector('.close-button') : null; 
+document.addEventListener('DOMContentLoaded', () => {
+    // 1. Elementos do Modal
+    const modal = document.getElementById('comoJogarModal');
+    // Adicionei uma verificação para evitar erros se o modal não existir
+    if (!modal) return; 
 
-// Função para abrir o modal
-function abrirComoJogarModal() {
-    if (comoJogarModal && comoJogarContent) {
-        // 1. Torna o modal-container visível (fundo preto) imediatamente
-        comoJogarModal.style.visibility = 'visible'; 
-        
-        // 2. Após um pequeno delay, adiciona a classe que ativa a transição (descida)
-        // Isso garante que o navegador reconheça o estado inicial (translateY(-100%)) antes de mudar para o estado final (translateY(0))
-        setTimeout(() => {
-            comoJogarContent.classList.add('is-visible');
-        }, 10); // 10ms é suficiente
-    }
-}
+    const modalContent = modal.querySelector('.como-jogar-content');
+    const btnAbrir = document.getElementById('btnComoJogar');
+    // Agora o 'X' tem o ID que procuramos!
+    const btnFechar = document.getElementById('closeTutorialModal'); 
 
-// Função para fechar o modal
-function fecharComoJogarModal() {
-    if (comoJogarModal && comoJogarContent) {
-        // 1. Remove a classe para acionar a transição de volta (subida/ocultação)
-        comoJogarContent.classList.remove('is-visible');
-        
-        // 2. Espera a transição terminar antes de ocultar o modal-container
-        // O tempo deve ser igual ao tempo de transição no CSS (0.5s = 500ms)
-        comoJogarContent.addEventListener('transitionend', function handler() {
-            comoJogarModal.style.visibility = 'hidden';
-            // IMPORTANTE: Remove o listener para evitar execuções futuras
-            comoJogarContent.removeEventListener('transitionend', handler); 
+    // 2. Elementos do Carrossel
+    const slides = modal.querySelectorAll('.carousel-slide');
+    const prevBtn = modal.querySelector('.prev-btn');
+    const nextBtn = modal.querySelector('.next-btn');
+    const dotsContainer = modal.querySelector('.dots-container');
+    
+    const totalSlides = slides.length;
+    let currentSlide = 1; // Começa no slide 1
+
+    // Se não há slides, não continua a inicialização do carrossel.
+    if (totalSlides === 0) return;
+
+    // --- NOVO: GERAÇÃO DINÂMICA DOS DOTS ---
+    for (let i = 0; i < totalSlides; i++) {
+        const dot = document.createElement('span');
+        dot.classList.add('dot');
+        // Usa o índice + 1 (para ser 1-based) no evento de clique
+        dot.addEventListener('click', () => {
+            currentSlideByDot(i + 1);
         });
+        dotsContainer.appendChild(dot);
     }
-}
+    const dots = dotsContainer.querySelectorAll('.dot'); // Recarrega a lista de dots
 
-// ... (O restante do seu código JavaScript, a lógica de evento é a mesma) ...
+    // --- FUNÇÕES DE CONTROLE DO CARROSSEL ---
 
-// 1. Abre o modal ao clicar no botão "comoJogar"
-if (btnComoJogar) {
-    btnComoJogar.addEventListener('click', (event) => {
-        event.preventDefault(); 
-        abrirComoJogarModal();
+    /**
+     * Mostra o slide com o índice 'n' e esconde os outros.
+     * Atualiza a visibilidade dos botões e dos indicadores (dots).
+     * @param {number} n - O índice do slide a ser mostrado (1-based).
+     */
+    function showSlide(n) {
+        // Correção de limites
+        if (n > totalSlides) {
+            currentSlide = totalSlides;
+        } else if (n < 1) {
+            currentSlide = 1;
+        } else {
+            currentSlide = n;
+        }
+
+        // 1. Esconde todos os slides 
+        slides.forEach(slide => {
+            slide.style.display = 'none';
+        });
+
+        // 2. Remove o estado 'active' de todos os dots
+        dots.forEach(dot => {
+            dot.classList.remove('active');
+        });
+
+        // 3. Mostra o slide atual e ativa o dot correspondente
+        if (slides[currentSlide - 1]) {
+            slides[currentSlide - 1].style.display = 'block';
+        }
+        if (dots[currentSlide - 1]) {
+            dots[currentSlide - 1].classList.add('active');
+        }
+
+        // 4. Atualiza a visibilidade das setas
+        // Se for o primeiro slide, esconde a seta de 'Anterior'
+        prevBtn.style.display = (currentSlide === 1) ? 'none' : 'block';
+        // Se for o último slide, esconde a seta de 'Próximo'
+        nextBtn.style.display = (currentSlide === totalSlides) ? 'none' : 'block';
+    }
+
+    /** Muda para o slide seguinte (incrementa o índice) */
+    function nextSlide() {
+        showSlide(currentSlide + 1);
+    }
+
+    /** Muda para o slide anterior (decrementa o índice) */
+    function prevSlide() {
+        showSlide(currentSlide - 1);
+    }
+
+    /** Mostra um slide específico clicando no dot */
+    function currentSlideByDot(n) {
+        showSlide(n);
+    }
+
+    // --- FUNÇÕES DO MODAL ---
+
+    function abrirModal() {
+        modal.style.visibility = 'visible';
+        // Atrasar a adição da classe 'is-visible' um pouco para garantir a transição
+        setTimeout(() => {
+            modalContent.classList.add('is-visible');
+        }, 10); 
+        
+        currentSlide = 1; // Garante que comece no primeiro slide
+        showSlide(currentSlide);
+    }
+
+    function fecharModal() {
+        // Inicia a transição de saída
+        modalContent.classList.remove('is-visible');
+        // Esconde o modal após a transição (0.5s no seu CSS)
+        setTimeout(() => {
+            modal.style.visibility = 'hidden';
+        }, 500); 
+    }
+
+
+    // --- EVENT LISTENERS ---
+
+    // Abrir modal ao clicar no botão "Como Jogar"
+    btnAbrir.addEventListener('click', (e) => {
+        e.preventDefault(); // Evita a navegação do link
+        abrirModal();
     });
-} else {
-    console.warn('Alerta: Botão "Como Jogar" (ID: btnComoJogar) não encontrado.');
-}
 
-// 2. Fecha o modal ao clicar no 'X'
-if (spanClose) {
-    spanClose.addEventListener('click', fecharComoJogarModal);
-}
-
-// 3. Opcional: Fecha o modal ao clicar fora dele (no fundo escuro)
-window.addEventListener('click', (event) => {
-    // ATENÇÃO: Aqui precisamos verificar se o target é o container e se o conteúdo está visível
-    if (event.target === comoJogarModal && comoJogarContent.classList.contains('is-visible')) {
-        fecharComoJogarModal();
+    // Fechar modal ao clicar no 'X'
+    if (btnFechar) {
+        btnFechar.addEventListener('click', fecharModal);
     }
-});
 
-window.addEventListener('load', () => {
-    // Verifica se o modal deve ser exibido automaticamente.
-    // É uma boa prática verificar se o usuário já viu o tutorial (usando localStorage, por exemplo), 
-    // mas para a exibição inicial, chamamos a função diretamente:
-    abrirComoJogarModal();
-});
+    // Fechar modal ao clicar fora da área de conteúdo
+    window.addEventListener('click', (e) => {
+        if (e.target === modal) {
+            fecharModal();
+        }
+    });
 
-document.addEventListener('keyup', (event) => {
-    // Verifica se a tecla pressionada é 'Escape' (código 27)
-    if (event.key === 'Escape' && comoJogarContent.classList.contains('is-visible')) {
-        fecharComoJogarModal();
-    }
+    // Eventos das setas
+    nextBtn.addEventListener('click', nextSlide);
+    prevBtn.addEventListener('click', prevSlide);
+    
+    abrirModal(); 
+    
+    // 2. Fechar modal ao apertar a tecla ESC
+    document.addEventListener('keydown', (e) => {
+        // Verifica se a tecla pressionada é a 'Escape' e se o modal está visível
+        if (e.key === 'Escape' && modal.style.visibility === 'visible') {
+            fecharModal();
+        }
+    });
 });
