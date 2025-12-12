@@ -254,6 +254,24 @@ body{
       /* Garante que o modal fique visível acima de tudo */
       z-index: 1001; 
   }
+
+  /* Garante que o texto dentro do slide seja branco e grande */
+.carousel-slide p,
+.carousel-slide h3 {
+    font-family: myFont;
+    color: white !important; /* Força a cor branca */
+    font-size: 35pt !important; /* Garante o tamanho grande */
+    line-height: 1.2;
+    padding: 10px; /* Adiciona espaçamento interno */
+    text-align: center; /* Centraliza o texto */
+}
+
+/* Opcional: Garante que o slide tenha altura para mostrar o conteúdo */
+.carousel-slide {
+    display: none;
+    /* Ajuste a altura máxima para que caiba bem no modal */
+    padding: 20px 10px; 
+}
   
   
   .como-jogar-content {
@@ -274,7 +292,8 @@ body{
       max-width: 600px;
       width: 80%; /* Ajuste a largura, se necessário */
       font-family: myFont;
-      font-size: 1000pt;
+      min-height: 500px;
+      height: 2000px;
       /* ------------------------------------- */
   
       /* --- ESTILOS DE POSICIONAMENTO E TRANSIÇÃO (NOVOS) --- */
@@ -294,13 +313,61 @@ body{
       left: 0;
       right: 0;
       margin: auto; /* Centraliza vertical e horizontalmente quando translateY(0) */
+      display: flex;
+    flex-direction: column;
+    /* Adiciona margem na parte inferior para garantir espaço para as setas/dots */
+    padding-bottom: 50px;
   }
+
+  .como-jogar-content h2 {
+    font-family: myFont;
+    color: white;
+    /* Escolha um tamanho grande para o título, ex: 60pt */
+    font-size: 60pt; 
+    margin-top: 10px;
+}
+
+/* 3. Estilo para o PARÁGRAFO (p) */
+.como-jogar-content p {
+    font-family: myFont;
+    color: white;
+    /* Escolha um tamanho grande para o texto, ex: 35pt */
+    font-size: 35pt !important; /* <--- USE !IMPORTANT AQUI */
+    /* O !important é necessário para anular o font-size: 20px no HTML */
+    
+    line-height: 1.2;
+    padding: 0 10px; /* Adiciona um pequeno espaço lateral */
+}
   
   /* Estado FINAL (visível) para o modal com efeito de descida */
   .como-jogar-content.is-visible {
       transform: translateY(0); /* Volta para a posição original (centralizado) */
       opacity: 1; /* Fica totalmente visível */
   }
+
+
+  /* --- ESTILO ESPECÍFICO PARA O SLIDE 2 --- */
+
+/* Altera o tamanho da fonte para o PARÁGRAFO (p) dentro do slide com a nova classe */
+.slide-menor-fonte p {
+    /* Por exemplo: Reduzir de 35pt para 25pt */
+    font-size:30pt !important; 
+}
+
+/* Opcional: Altera o tamanho da fonte para o TÍTULO (h3) dentro do slide com a nova classe */
+.slide-menor-fonte h3 {
+    /* Por exemplo: Reduzir de 60pt (do título do modal) para 40pt */
+    font-size: 55pt !important; 
+}
+
+.carousel-slide img.slide-imagem {
+    max-width: 90%; /* Limita a largura da imagem para não estourar o modal */
+    height: auto; /* Mantém a proporção */
+    margin-bottom: 15px; /* Adiciona espaço entre a imagem e o título */
+    display: block; /* Garante que a imagem se comporte como um bloco */
+    margin-left: auto;
+    margin-right: auto; /* Centraliza a imagem */
+}
   
   /* Estilo para o botão 'X' de fechar */
   .close-button {
@@ -343,3 +410,94 @@ body{
   #blocklyDiv {
       z-index: 1 !important;
   }
+
+  /* --- ESTILOS DO CARROSSEL (TUTORIAL) --- */
+
+/* Esconde todos os slides do carrossel por padrão */
+.carousel-slide {
+    display: none;
+    padding: 0 10px; /* Adiciona um respiro interno */
+}
+
+/* Garante que o container do conteúdo do modal tenha posição relativa para as setas */
+.como-jogar-content {
+    position: relative; 
+    /* Outros estilos do seu como-jogar-content permanecem */
+}
+
+/* Centraliza o container dos slides dentro do modal-content */
+.carousel-container {
+    width: 100%;
+    overflow: hidden; /* Importante para garantir que apenas um slide seja visível */
+}
+
+/* Estilo dos Botões de Navegação (Setas) */
+.prev-btn, .next-btn {
+    cursor: pointer;
+    
+    /* REMOVER: Posicionamento Absoluto (Não queremos mais que flutuem) */
+    position: relative; /* Mudado de 'absolute' para 'relative' */
+    top: auto; /* Removido ou definido como auto */
+    margin-top: 0; /* Removido o ajuste vertical */
+    
+    /* Definimos as setas como elementos inline para que fiquem lado a lado */
+    display: inline-block;
+    
+    /* Remova o fundo para que eles fiquem transparentes */
+    background-color: transparent; 
+    
+    /* Outros estilos de aparência: */
+    width: auto;
+    padding: 10px; 
+    color: white; 
+    font-weight: bold;
+    font-size: 30px; 
+    transition: 0.6s ease;
+    border-radius: 5px;
+    border: none;
+    user-select: none;
+    z-index: 100;
+}
+
+/* Posição da seta 'Próximo' (direita) */
+.next-btn {
+    right: 0;
+    border-radius: 3px 0 0 3px;
+}
+
+/* Posição da seta 'Anterior' (esquerda) */
+.prev-btn {
+    left: 0;
+    border-radius: 0 3px 3px 0;
+}
+
+/* Efeito hover nas setas */
+.prev-btn:hover, .next-btn:hover {
+    background-color: rgba(0,0,0,0.8);
+}
+
+/* Estilo dos Indicadores (Dots) */
+.dots-container {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.dot {
+    cursor: pointer;
+    height: 15px;
+    width: 15px;
+    margin: 0 4px;
+    background-color: #bbb; /* Cor padrão */
+    border-radius: 50%;
+    display: inline-block;
+    transition: background-color 0.6s ease;
+}
+
+.dot.active {
+    background-color: #717171; /* Cor escura para indicar o slide atual */
+}
+
+.modalimg{
+  width: 200px;
+  height: auto;
+}

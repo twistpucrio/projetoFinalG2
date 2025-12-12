@@ -22,15 +22,28 @@ body {
 /* botão 1 no canto inferior esquerdo */
 .button1 {
     position: absolute;
-    bottom: -10px;
+    bottom: 15px;
     left: 0px; /* distância do canto esquerdo */
+    width: 120px;
+    height: 120px; 
+    background-color: white; 
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden; 
+    border-width: 10px;       /* 1. Define a espessura da borda */
+    border-style: solid;     /* 2. Define o estilo (necessário para a cor aparecer) */
+    border-color: #4CAF50;
+    z-index: 10;
 }
 
 /* botão 2 ao lado do botão 1 */
 .button2 {
     position: absolute;
     bottom: -16px;
-    left: 80px; /* ajuste a distância horizontal */
+    left: 60px;
+    z-index: 5;
 }
 
 .button3 {
@@ -63,7 +76,7 @@ button {
 }
 
 .button2 img{
-    width: 220px;
+    width: 320px;
     height: auto;
     image-rendering: pixelated;
     cursor: pointer;
