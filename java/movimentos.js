@@ -84,7 +84,7 @@ function abrirGameOver2(){
 }
 
 function abrirVitoria() {
-    
+    controle = 2;
     document.getElementById("vitoriaModal").style.visibility = "visible";
     const nivelAtual = document.body.getAttribute("data-nivel");
     localStorage.setItem(`nivel${nivelAtual}`, "unlocked");
@@ -109,6 +109,7 @@ function fecharGameOverEReiniciar() {
 
     direcaoAtual = 'direita';
     personagem.src = "img/entregadoraViradaDireita.png";
+    controle = 1;
     // Se quiser recarregar, use location.reload();
 }
 
