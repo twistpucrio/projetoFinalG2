@@ -5,35 +5,74 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Code Her Way</title>
     <link rel="stylesheet" href="estilo/home.css">
-
+    <script src="java/home.js" defer></script>
 </head>
+
 <body>
     <div id="main-title">
-        <header id="cab">
-        </header>
 
 
-        <!-- BOTÕES  -->
+
+
         <section id="main">
-            <button class="button1"> 
-                <a id="comojogar" href="comoJoga.html">
-                    <img id="ftbotaocomo" src="img/comoJoga.png" alt="home">
-                </a>
-            </button>
-            
-            <button class="button2"> 
-                <a id="sobreequipe" href="sobremim.html">
-                    <img id="ftbotaosobre" src="img/sobreaequipe.png" alt="equipe"> 
-                </a>
-            </button> 
 
+            <!-- BOTÃO COMO JOGAR -->
+            <button class="button1" id="comojogar">
+                <img id="ftbotaocomo" src="img/comoJoga.png" alt="como jogar">
+            </button>
+
+
+            <a class="button2" id="sobreequipe" href="sobremim.html">
+                <img id="ftbotaosobre" src="img/sobreaequipe.png" alt="equipe">
+            </a>
+
+            <!-- BOTÃO PLAY -->
             <a class="button3" href="mapaniveIs.html">
                 <img id="ftbotaoplay" src="img/play.png" alt="play">
             </a>
 
+            <!-- MODAL / CARROSSEL -->
+            <div id="historia" class="historia">
+
+                <span class="close-button">&times;</span>
+
+                <div class="carousel">
+
+                    <!-- SETA ESQUERDA -->
+                    <button class="arrow left" id="prevSlide">&#10094;</button>
+
+                    <!-- SLIDES -->
+                    <div class="carousel-slide">
+
+                        <div class="slide active">
+                            <h2 id="titulo">Como tudo começou...</h2>
+                        </div>
+
+                        <div class="slide">
+                            <img src="img/modal1.png" class="slide-img">
+                            <p>Vitória tem um grande sonho: ter um computador! </p>
+                        </div>
+
+                        <div class="slide">
+                            <img src="img/modal2.png" class="slide-img">
+                            <p>Ela teve uma ideia brilhante: vender pizzas para conseguir dinheiro.</p>
+                        </div>
+
+                        <div class="slide">
+                            <p>Para entregar as pizzas a tempo, Vitória precisa de você! Sua missão é usar a
+                                 lógica de programação para criar os caminhos perfeitos.</p>
+                            <img id="final" src="img/entregadoraViradaDireita.png" class="slide-img">
+                        </div>
+
+                    </div>
+
+                    <!-- SETA DIREITA -->
+                    <button class="arrow right" id="nextSlide">&#10095;</button>
+
+                </div>
+            </div>
 
         </section>
-        <footer id="rod"></footer>
     </div>
 </body>
 </html>
