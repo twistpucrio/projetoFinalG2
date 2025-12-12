@@ -260,7 +260,7 @@ body{
 .carousel-slide h3 {
     font-family: myFont;
     color: white !important; /* Força a cor branca */
-    font-size: 35pt !important; /* Garante o tamanho grande */
+    font-size: 25pt !important; /* Garante o tamanho grande */
     line-height: 1.2;
     padding: 10px; /* Adiciona espaçamento interno */
     text-align: center; /* Centraliza o texto */
@@ -500,4 +500,14 @@ body{
 .modalimg{
   width: 200px;
   height: auto;
+}
+
+/* 1. Para o título (h3) */
+.carousel-slide.slide-final-fonte h3 {
+    font-size: 40pt !important; /* Tamanho para o título do último slide */
+}
+
+/* 2. Para o parágrafo (p) */
+.carousel-slide.slide-final-fonte p {
+    font-size: 20pt !important; /* Tamanho para o parágrafo do último slide */
 }
