@@ -118,29 +118,41 @@ body{
     z-index: 1000;
   }
   
+  
   .modal-content{
-    background: white;
+    background: lavenderblush;
     padding: 20px;
     border-radius: 10px;
     text-align: center;
-    max-width: 800px;
-    width: 90%;
-    max-height: 700px;
+
+    width: 50vw;          /* 80% da largura da tela */
+    max-width: 900px;    /* permite ficar BEM maior */
+    min-width: 400px;     /* evita ficar estreito */
+    max-height: 85vh;
+
     display: flex;
     flex-direction: column;
     align-items: center;
+    
+
   }
   
-  #gameOverModalImagem {
+  #gameOverModalImage  {
     width: 90%;
     height: auto;
     margin-bottom: 20px;
+  }
+
+  #vitoriaModalImage {
+    width: 56%;
+    height: 40%;
+    margin-bottom: 30px;
   }
   
   .modal-content h2{
     font-family: myFont;
     color: #CC0000;
-    font-size: 55px;
+    font-size: 52px;
   }
   
   .modal-content p{
@@ -187,9 +199,9 @@ body{
   
   .modal-content img {
       /* Garante que a imagem use uma boa parte da largura do modal */
-      max-width: 70%; 
+      max-width: 52%; 
       height: auto;
-      margin-bottom: 20px;
+      margin-bottom: 5px;
   }
   
   .button1 {
